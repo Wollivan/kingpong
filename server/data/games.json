@@ -1,0 +1,10 @@
+[
+  {
+    "gameId": "1",
+    "sport": "pingpong",
+    "playerOneID": "1",
+    "playerTwoId": "2",
+    "playerOneScore": "11",
+    "playerTwoScore": "9"
+  }
+]
