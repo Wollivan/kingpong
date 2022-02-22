@@ -3,54 +3,55 @@ const fs = require("fs");
 // Functions to EDIT a single inventory item by id
 
 function readData() {
-  return JSON.parse(fs.readFileSync("./data/players.json"));
+  return JSON.parse(fs.readFileSync("./data/playerData.json"));
 }
 
 function editPlayer(req, res) {
   try {
-    const playerToFind = req.params.playerId;
+    const playerToFind = req.params.playerName;
     const playerData = readData();
 
     const playerIndex = playerData.findIndex(
-      (player) => player.playerId === playerToFind
+      (player) => player.playerName === playerToFind
     );
     if (playerIndex === -1) {
-      return res.status(404).json({ message: "player not found" });
+      return res.status(404).json({ message: "Player not found" });
     }
 
     const {
-      playerId,
-      sport,
-      playerOneID,
-      playerTwoId,
-      playerOneScore,
-      playerTwoScore,
+      wins,
+      losses,
+      perfectGames,
+      avgScore,
+      avgOpScore,
+      mostWinsAgainst,
+      mostLossesAgainst,
     } = req.body;
 
     // inventory item details
-    if (warehouseID) {
-      playerData[playerIndex].warehouseID = warehouseID;
+    if (wins) {
+      playerData[playerIndex].wins = wins;
     }
-    if (warehouseName) {
-      playerData[playerIndex].warehouseName = warehouseName;
+    if (losses) {
+      playerData[playerIndex].losses = losses;
     }
-    if (itemName) {
-      playerData[playerIndex].itemName = itemName;
+    if (perfectGames) {
+      playerData[playerIndex].perfectGames = perfectGames;
     }
-    if (description) {
-      playerData[playerIndex].description = description;
+    if (avgScore) {
+      playerData[playerIndex].avgScore = avgScore;
     }
-    if (category) {
-      playerData[playerIndex].category = category;
+    if (avgOpScore) {
+      playerData[playerIndex].avgOpScore = avgOpScore;
     }
-    if (status) {
-      playerData[playerIndex].status = status;
+    if (mostWinsAgainst) {
+      playerData[playerIndex].mostWinsAgainst = mostWinsAgainst;
     }
-    if (quantity) {
-      playerData[playerIndex].quantity = quantity;
+    if (mostLossesAgainst) {
+      playerData[playerIndex].mostLossesAgainst = mostLossesAgainst;
     }
 
-    // remove inventory item, and add in new inventory item
+    // remove player, and add in new player
     playerData.splice(playerIndex, 1, playerData[playerIndex]);
 
     // write to file

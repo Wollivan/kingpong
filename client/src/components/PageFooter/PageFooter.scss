@@ -1,3 +1,8 @@
 @use "../../styles/partials/variables" as v;
 @use "../../styles/partials/mixins" as m;
 @use "../../styles/partials/breakpoints" as bp;
+
+.footer {
+  padding: 5rem 3rem 1rem 3rem;
+  text-align: center;
+}

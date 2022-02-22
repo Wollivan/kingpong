@@ -52,13 +52,19 @@ export default function LeaderBoard() {
     });
     let output = sortedPlayers.map((player) => {
       return (
-        <div className="leaderboard__item" key={player.playerId}>
+        <div className="leaderboard__item" key={player.name}>
           <div className="leaderboard__item-value">{player.name}</div>
           <div className="leaderboard__item-value">{player.wins}</div>
           <div className="leaderboard__item-value">{player.losses}</div>
           <div className="leaderboard__item-value">{player.perfectGames}</div>
           <div className="leaderboard__item-value">{player.avgScore}</div>
           <div className="leaderboard__item-value">{player.avgOpScore}</div>
+          <div className="leaderboard__item-value">
+            {player.mostWinsAgainst}
+          </div>
+          <div className="leaderboard__item-value">
+            {player.mostLossesAgainst}
+          </div>
         </div>
       );
     });
@@ -69,12 +75,14 @@ export default function LeaderBoard() {
     return (
       <div className="leaderboard">
         <div className="leaderboard__item--header">
-          <div className="leaderboard__item-value">Name</div>
+          <div className="leaderboard__item-value bold">Name</div>
           <div className="leaderboard__item-value">Wins</div>
           <div className="leaderboard__item-value">Losses</div>
           <div className="leaderboard__item-value">Perfect Games</div>
           <div className="leaderboard__item-value">Avg Score</div>
           <div className="leaderboard__item-value">Avg Op. Score</div>
+          <div className="leaderboard__item-value">Most Wins Against</div>
+          <div className="leaderboard__item-value">Most Losses Against</div>
         </div>
         {getLeaderBoard()}
       </div>

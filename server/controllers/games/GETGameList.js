@@ -7,7 +7,7 @@ function getGameList(req, res) {
     const gameData = JSON.parse(fs.readFileSync("./data/games.json"));
 
     if (!gameData) {
-      res.status(404).json({ message: "Game list not found" });
+      res.status(404).json({ message: "game list not found" });
     }
     return res.status(200).json(gameData);
   } catch (err) {

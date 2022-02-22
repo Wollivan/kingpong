@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./AddGameForm.scss";
+import axios from "axios";
+import { GAMES_API, PLAYERS_API } from "../../utils/api";
 
 export default function AddGameForm({ formTemplate }) {
   const [formValid, setFormValid] = useState(true);
   const [form, setForm] = useState({
-    playerOne: "",
-    playerTwo: "",
+    playerOneName: "",
+    playerTwoName: "",
     playerOneScore: "",
     playerTwoScore: "",
   });
@@ -17,16 +19,16 @@ export default function AddGameForm({ formTemplate }) {
   const isFormValid = () => {
     let formValid = true;
 
-    let playerOne = document.querySelector(".player-one-check");
+    let playerOneName = document.querySelector(".player-one-check");
     let playerOneScore = document.querySelector(".player-one-score-check");
-    let playerTwo = document.querySelector(".player-two-check");
+    let playerTwoName = document.querySelector(".player-two-check");
     let playerTwoScore = document.querySelector(".player-two-score-check");
 
-    if (!form.playerOne) {
-      playerOne.classList.add("show");
+    if (!form.playerOneName) {
+      playerOneName.classList.add("show");
       formValid = false;
     } else {
-      playerOne.classList.remove("show");
+      playerOneName.classList.remove("show");
     }
     if (!form.playerOneScore) {
       playerOneScore.classList.add("show");
@@ -34,11 +36,11 @@ export default function AddGameForm({ formTemplate }) {
     } else {
       playerOneScore.classList.remove("show");
     }
-    if (!form.playerTwo) {
-      playerTwo.classList.add("show");
+    if (!form.playerTwoName) {
+      playerTwoName.classList.add("show");
       formValid = false;
     } else {
-      playerTwo.classList.remove("show");
+      playerTwoName.classList.remove("show");
     }
     if (!form.playerTwoScore) {
       playerTwoScore.classList.add("show");
@@ -49,7 +51,28 @@ export default function AddGameForm({ formTemplate }) {
 
     //make axios call
     if (formValid) {
-      return true;
+      //add a new game
+      axios
+        .post(GAMES_API, form)
+        .then((response) => {
+          console.log("New game done");
+          //post games returns array of two objects (these are the players)
+          // const playerOne = response.data[0];
+          // const playerTwo = response.data[1];
+          // //edit player one
+          // axios
+          //   .put(`${PLAYERS_API}/${playerOne.name}`, playerOne)
+          //   .then(() => {
+          //     //edit plaer two
+          //     console.log("player one done");
+          //     axios
+          //       .put(`${PLAYERS_API}/${playerTwo.name}`, playerTwo)
+          //       .then(() => console.log("players updated!"))
+          //       .catch();
+          //   })
+          //   .catch();
+        })
+        .catch();
     } else {
       return false;
     }
@@ -57,11 +80,13 @@ export default function AddGameForm({ formTemplate }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log(form);
     if (isFormValid()) {
       setFormValid(true);
-
-      // TODO axios call to add the game (which will then do the calculations on the players)
+      axios
+        .post(GAMES_API, form)
+        .then(() => console.log("it worked (we think)"))
+        .catch();
     } else {
       setFormValid(false);
     }
@@ -71,19 +96,19 @@ export default function AddGameForm({ formTemplate }) {
     <form className="add-game-form" onSubmit={handleSubmit}>
       <div className="add-game-form__name-wrap">
         <input
-          name="playerOne"
+          name="playerOneName"
           type="text"
           placeholder="Player One"
           className="add-game-form__input--half"
-          value={form.playerOne}
+          value={form.playerOneName}
           onChange={handleChange}
         />
         <input
-          name="playerTwo"
+          name="playerTwoName"
           type="text"
           placeholder="Player Two"
           className="add-game-form__input--half"
-          value={form.playerTwo}
+          value={form.playerTwoName}
           onChange={handleChange}
         />
       </div>

@@ -1,8 +1,8 @@
 @use "./variables" as v;
 
 .button {
-  background-color: v.$primary-color;
-  border: 1px solid v.$primary-color;
+  background-color: v.$tertiary-color;
+  border: 1px solid v.$tertiary-color;
   border-radius: 5px;
   color: #fff;
   padding: 0.5rem 1rem;
@@ -39,14 +39,14 @@
   }
   &__disabled {
     @extend .button;
-    background-color: v.$primary-color;
-    border: 1px solid v.$primary-color;
+    background-color: v.$tertiary-color;
+    border: 1px solid v.$tertiary-color;
     opacity: 0.4;
     color: #fff;
     cursor: default;
     &:hover {
-      background-color: v.$primary-color;
-      border: 1px solid v.$primary-color;
+      background-color: v.$tertiary-color;
+      border: 1px solid v.$tertiary-color;
       color: #fff;
     }
   }

@@ -1,12 +1,1 @@
-[
-  {
-    "gameId": "1",
-    "sport": "pingpong",
-    "playerOneName": "Tim",
-    "playerTwoName": "JJ",
-    "playerOneID": "1",
-    "playerTwoId": "2",
-    "playerOneScore": "11",
-    "playerTwoScore": "9"
-  }
-]
+[{"gameId":"5ysjz18kwkzyqlq5p","playerOneName":"Tim","playerTwoName":"Jadame","playerOneScore":"11","playerTwoScore":"9"}]
