@@ -15,13 +15,13 @@ class App extends Component {
           <PageHeader />
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route
+            {/* <Route
               path="/games/:gameId/"
               exact
               render={(routerProps) => {
                 return <GameDetails {...routerProps} />;
               }}
-            />
+            /> */}
             {/* <Route path="/method" exact component={Method} /> */}
           </Switch>
           <PageFooter />

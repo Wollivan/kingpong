@@ -1,18 +1,38 @@
 [
   {
     "playerId": "1",
-    "name": "Tim"
+    "name": "Tim",
+    "wins": 10,
+    "losses": 0,
+    "perfectGames": 2,
+    "avgScore": 10,
+    "avgOpScore": 2
   },
   {
     "playerId": "2",
-    "name": "JJ"
+    "name": "JJ",
+    "wins": 5,
+    "losses": 5,
+    "perfectGames": 0,
+    "avgScore": 10,
+    "avgOpScore": 2
   },
   {
     "playerId": "3",
-    "name": "Bambi"
+    "name": "Bambi",
+    "wins": 2,
+    "losses": 3,
+    "perfectGames": 1,
+    "avgScore": 10,
+    "avgOpScore": 2
   },
   {
     "playerId": "4",
-    "name": "Jadams"
+    "name": "Jadams",
+    "wins": 100,
+    "losses": 1,
+    "perfectGames": 1,
+    "avgScore": 10,
+    "avgOpScore": 2
   }
 ]

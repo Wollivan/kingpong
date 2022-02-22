@@ -1,0 +1,38 @@
+@use "../../styles/partials/variables" as v;
+@use "../../styles/partials/mixins" as m;
+@use "../../styles/partials/breakpoints" as bp;
+
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    border: 1px solid #000;
+    &-value {
+      padding: 1rem;
+      &:nth-child(odd) {
+        background-color: #efefef;
+      }
+      width: 15%;
+      &--header {
+        @extend .leaderboard__item-value;
+        font-weight: 800;
+        writing-mode: vertical-lr;
+        text-orientation: mixed;
+        text-align: right;
+        @include bp.medium {
+          writing-mode: unset;
+          text-orientation: unset;
+          text-align: left;
+        }
+      }
+    }
+    &--header {
+      @extend .leaderboard__item;
+      font-weight: 800;
+    }
+  }
+}

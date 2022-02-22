@@ -1,0 +1,47 @@
+@use "../../styles/partials/variables" as v;
+@use "../../styles/partials/mixins" as m;
+@use "../../styles/partials/breakpoints" as bp;
+
+.add-game-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  &__name-wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  // width: 50%;
+  &__input {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0;
+    margin-top: 1.5rem;
+    &--half {
+      @extend .add-game-form__input;
+      width: 48%;
+    }
+  }
+  .player-one-check,
+  .player-one-score-check,
+  .player-two-check,
+  .player-two-score-check {
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+  &__error-text {
+    margin: 0;
+    color: #ff0000;
+  }
+  &__submit {
+    margin-top: 1.5rem;
+  }
+}

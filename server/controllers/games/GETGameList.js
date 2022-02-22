@@ -2,7 +2,7 @@ const fs = require("fs");
 
 // Function to GET inventory list
 
-function getInventoryList(req, res) {
+function getGameList(req, res) {
   try {
     const gameData = JSON.parse(fs.readFileSync("./data/games.json"));
 
@@ -17,4 +17,4 @@ function getInventoryList(req, res) {
   }
 }
 
-module.exports = getInventoryList;
+module.exports = getGameList;
