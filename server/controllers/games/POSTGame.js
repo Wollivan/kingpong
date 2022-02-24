@@ -38,7 +38,7 @@ function addGame(req, res) {
         };
       }
     });
-    // console.log(allGamesMapped);
+    console.log(allGamesMapped);
 
     // total games
     const playerOneGameCount = allGamesMapped.filter((game) => {
@@ -52,49 +52,79 @@ function addGame(req, res) {
     // avg score
     const playerOneAvgScore =
       allGamesMapped.reduce((total, next) => {
-        return total + parseInt(next.playerOneScore);
+        return (
+          total + parseInt(next.playerOneScore) &&
+          game.playerOneName === playerOneName
+        );
       }, 0) / playerOneGameCount;
 
     const playerTwoAvgScore =
       allGamesMapped.reduce((total, next) => {
-        return total + parseInt(next.playerTwoScore);
+        return (
+          total + parseInt(next.playerTwoScore) &&
+          game.playerTwoName === playerTwoName
+        );
       }, 0) / playerTwoGameCount;
 
     // avg op score
     const playerOneAvgOpScore =
       allGamesMapped.reduce((total, next) => {
-        return total + parseInt(next.playerTwoScore);
+        return (
+          total + parseInt(next.playerTwoScore) &&
+          game.playerOneName === playerOneName
+        );
       }, 0) / playerOneGameCount;
 
     const playerTwoAvgOpScore =
       allGamesMapped.reduce((total, next) => {
-        return total + parseInt(next.playerOneScore);
+        return (
+          total + parseInt(next.playerOneScore) &&
+          game.playerTwoName === playerTwoName
+        );
       }, 0) / playerTwoGameCount;
-
+    // console.log(playerTwoAvgOpScore, playerTwoGameCount);
     // perfect game count
     const playerOnePerfectGames = allGamesMapped.filter((game) => {
-      return parseInt(game.playerTwoScore) === 0;
+      return (
+        parseInt(game.playerTwoScore) === 0 &&
+        game.playerOneName === playerOneName
+      );
     }).length;
     const playerTwoPerfectGames = allGamesMapped.filter((game) => {
-      return parseInt(game.playerOneScore) === 0;
+      return (
+        parseInt(game.playerOneScore) === 0 &&
+        game.playerTwoName === playerTwoName
+      );
     }).length;
 
     // wins
     const playerOneWins = allGamesMapped.filter((game) => {
-      return parseInt(game.playerOneScore) > parseInt(game.playerTwoScore);
+      return (
+        parseInt(game.playerOneScore) > parseInt(game.playerTwoScore) &&
+        game.playerOneName === playerOneName
+      );
     }).length;
 
     const playerTwoWins = allGamesMapped.filter((game) => {
-      return parseInt(game.playerOneScore) < parseInt(game.playerTwoScore);
+      return (
+        parseInt(game.playerOneScore) < parseInt(game.playerTwoScore) &&
+        game.playerTwoName === playerTwoName
+      );
     }).length;
 
     // losses
     const playerOneLosses = allGamesMapped.filter((game) => {
-      return parseInt(game.playerOneScore) < parseInt(game.playerTwoScore);
+      return (
+        parseInt(game.playerOneScore) < parseInt(game.playerTwoScore) &&
+        game.playerOneName === playerOneName
+      );
     }).length;
 
     const playerTwoLosses = allGamesMapped.filter((game) => {
-      return parseInt(game.playerOneScore) > parseInt(game.playerTwoScore);
+      return (
+        parseInt(game.playerOneScore) > parseInt(game.playerTwoScore) &&
+        game.playerTwoName === playerTwoName
+      );
     }).length;
 
     // TODO most wins against
@@ -151,7 +181,7 @@ function addGame(req, res) {
     fs.writeFileSync("./data/players.json", JSON.stringify(playerData));
 
     //return the two players, for the call to then run 2 more axios calls to update them
-    return res.status(201).json([playerOneNew, playerTwoNew]);
+    return res.status(201).json(gameData);
   } catch (err) {
     return res
       .status(500)

@@ -57,8 +57,12 @@ export default function LeaderBoard() {
           <div className="leaderboard__item-value">{player.wins}</div>
           <div className="leaderboard__item-value">{player.losses}</div>
           <div className="leaderboard__item-value">{player.perfectGames}</div>
-          <div className="leaderboard__item-value">{player.avgScore}</div>
-          <div className="leaderboard__item-value">{player.avgOpScore}</div>
+          <div className="leaderboard__item-value">
+            {parseFloat(player.avgScore).toFixed(2)}
+          </div>
+          <div className="leaderboard__item-value">
+            {parseFloat(player.avgOpScore).toFixed(2)}
+          </div>
           <div className="leaderboard__item-value">
             {player.mostWinsAgainst}
           </div>
