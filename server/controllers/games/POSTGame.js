@@ -3,6 +3,34 @@ const uniqid = require("uniqid");
 
 // Function to ADD an inventory item
 
+function mostAgainst(gamesArray, player) {
+  let counts = {};
+  let compare = 0;
+  let mostFrequent = "no wins";
+
+  for (let i = 0; i < gamesArray.length; i++) {
+    let opponent;
+    if (player == 1) {
+      opponent = gamesArray[i].playerTwoName;
+    } else {
+      opponent = gamesArray[i].playerOneName;
+    }
+    console.log(opponent, player);
+    // console.log(opponent);
+    if (!counts[opponent]) {
+      counts[opponent] = 1;
+    } else {
+      counts[opponent] = counts[opponent] + 1;
+    }
+    // console.log(counts);
+    if (counts[opponent] > compare) {
+      compare = counts[opponent];
+      mostFrequent = opponent;
+    }
+  }
+  return mostFrequent;
+}
+
 function addGame(req, res) {
   try {
     const { playerOneName, playerTwoName, playerOneScore, playerTwoScore } =
@@ -20,25 +48,48 @@ function addGame(req, res) {
     fs.writeFileSync("./data/games.json", JSON.stringify(gameData));
 
     // When adding a game update both player
-
-    const allGamesMapped = gameData.map((player) => {
-      if (player.playerOneName === playerOneName) {
+    const gamesFiltered = gameData.filter((game) => {
+      return (
+        game.playerOneName === playerOneName ||
+        game.playerTwoName === playerOneName ||
+        game.playerOneName === playerTwoName ||
+        game.playerTwoName === playerTwoName
+      );
+    });
+    // console.log(gamesFiltered);
+    const allGamesMapped = gamesFiltered.map((game) => {
+      // console.log(game);
+      if (game.playerOneName == playerOneName) {
         return {
-          playerOneName: player.playerOneName,
-          playerTwoName: player.playerTwoName,
-          playerOneScore: player.playerOneScore,
-          playerTwoScore: player.playerTwoScore,
+          playerOneName: game.playerOneName,
+          playerTwoName: game.playerTwoName,
+          playerOneScore: game.playerOneScore,
+          playerTwoScore: game.playerTwoScore,
         };
-      } else if (player.playerTwoName === playerOneName) {
+      } else if (game.playerTwoName == playerTwoName) {
         return {
-          playerOneName: player.playerTwoName,
-          playerTwoName: player.playerOneName,
-          playerOneScore: player.playerTwoScore,
-          playerTwoScore: player.playerOneScore,
+          playerOneName: game.playerOneName,
+          playerTwoName: game.playerTwoName,
+          playerOneScore: game.playerOneScore,
+          playerTwoScore: game.playerTwoScore,
+        };
+      } else if (game.playerOneName == playerTwoName) {
+        return {
+          playerOneName: game.playerTwoName,
+          playerTwoName: game.playerOneName,
+          playerOneScore: game.playerTwoScore,
+          playerTwoScore: game.playerOneScore,
+        };
+      } else if (game.playerTwoName == playerOneName) {
+        return {
+          playerOneName: game.playerTwoName,
+          playerTwoName: game.playerOneName,
+          playerOneScore: game.playerTwoScore,
+          playerTwoScore: game.playerOneScore,
         };
       }
     });
-    console.log(allGamesMapped);
+    // console.log(allGamesMapped);
 
     // total games
     const playerOneGameCount = allGamesMapped.filter((game) => {
@@ -49,40 +100,56 @@ function addGame(req, res) {
       return game.playerTwoName === playerTwoName;
     }).length;
 
+    // console.log(playerOneGameCount, playerOneName);
+    // console.log(playerTwoGameCount, playerTwoName);
+    // console.log("player total games");
+
     // avg score
     const playerOneAvgScore =
-      allGamesMapped.reduce((total, next) => {
-        return (
-          total + parseInt(next.playerOneScore) &&
-          game.playerOneName === playerOneName
-        );
-      }, 0) / playerOneGameCount;
+      allGamesMapped
+        .filter((game) => {
+          return game.playerOneName == playerOneName;
+        })
+        .reduce((total, next) => {
+          return total + parseInt(next.playerOneScore);
+        }, 0) / playerOneGameCount;
 
     const playerTwoAvgScore =
-      allGamesMapped.reduce((total, next) => {
-        return (
-          total + parseInt(next.playerTwoScore) &&
-          game.playerTwoName === playerTwoName
-        );
-      }, 0) / playerTwoGameCount;
+      allGamesMapped
+        .filter((game) => {
+          return game.playerTwoName == playerTwoName;
+        })
+        .reduce((total, next) => {
+          return total + parseInt(next.playerTwoScore);
+        }, 0) / playerTwoGameCount;
+
+    // console.log(playerOneAvgScore, playerOneName);
+    // console.log(playerTwoAvgScore, playerTwoName);
+    // console.log("player av score");
 
     // avg op score
     const playerOneAvgOpScore =
-      allGamesMapped.reduce((total, next) => {
-        return (
-          total + parseInt(next.playerTwoScore) &&
-          game.playerOneName === playerOneName
-        );
-      }, 0) / playerOneGameCount;
+      allGamesMapped
+        .filter((game) => {
+          return game.playerOneName == playerOneName;
+        })
+        .reduce((total, next) => {
+          return total + parseInt(next.playerTwoScore);
+        }, 0) / playerOneGameCount;
 
     const playerTwoAvgOpScore =
-      allGamesMapped.reduce((total, next) => {
-        return (
-          total + parseInt(next.playerOneScore) &&
-          game.playerTwoName === playerTwoName
-        );
-      }, 0) / playerTwoGameCount;
-    // console.log(playerTwoAvgOpScore, playerTwoGameCount);
+      allGamesMapped
+        .filter((game) => {
+          return game.playerTwoName == playerTwoName;
+        })
+        .reduce((total, next) => {
+          return total + parseInt(next.playerOneScore);
+        }, 0) / playerTwoGameCount;
+
+    // console.log(playerOneAvgOpScore, playerOneName);
+    // console.log(playerTwoAvgOpScore, playerTwoName);
+    // console.log("player av score");
+
     // perfect game count
     const playerOnePerfectGames = allGamesMapped.filter((game) => {
       return (
@@ -96,6 +163,10 @@ function addGame(req, res) {
         game.playerTwoName === playerTwoName
       );
     }).length;
+
+    // console.log(playerOnePerfectGames, playerOneName);
+    // console.log(playerTwoPerfectGames, playerTwoName);
+    // console.log("player perfect games");
 
     // wins
     const playerOneWins = allGamesMapped.filter((game) => {
@@ -112,6 +183,10 @@ function addGame(req, res) {
       );
     }).length;
 
+    // console.log(playerOneWins, playerOneName);
+    // console.log(playerTwoWins, playerTwoName);
+    // console.log("player wins");
+
     // losses
     const playerOneLosses = allGamesMapped.filter((game) => {
       return (
@@ -127,13 +202,43 @@ function addGame(req, res) {
       );
     }).length;
 
-    // TODO most wins against
-    // TODO most losses against
+    // console.log(playerOneLosses, playerOneName);
+    // console.log(playerTwoLosses, playerTwoName);
+    // console.log("player losses");
 
-    const playerOneMostWinsAgainst = "TBC";
-    const playerOneMostLossesAgainst = "TBC";
-    const playerTwoMostWinsAgainst = "TBC";
-    const playerTwoMostLossesAgainst = "TBC";
+    // most wins and losses against
+    const playerOneGamesW = allGamesMapped.filter((game) => {
+      return (
+        game.playerOneName == playerOneName &&
+        game.playerOneScore > game.playerTwoScore
+      );
+    });
+
+    const playerOneGamesL = allGamesMapped.filter((game) => {
+      return (
+        game.playerOneName == playerOneName &&
+        game.playerOneScore < game.playerTwoScore
+      );
+    });
+
+    const playerTwoGamesW = allGamesMapped.filter((game) => {
+      return (
+        game.playerTwoName == playerTwoName &&
+        game.playerTwoScore > game.playerOneScore
+      );
+    });
+
+    const playerTwoGamesL = allGamesMapped.filter((game) => {
+      return (
+        game.playerTwoName == playerTwoName &&
+        game.playerTwoScore < game.playerOneScore
+      );
+    });
+
+    const playerOneMostWinsAgainst = mostAgainst(playerOneGamesW, 1);
+    const playerTwoMostWinsAgainst = mostAgainst(playerTwoGamesW, 2);
+    const playerOneMostLossesAgainst = mostAgainst(playerOneGamesL, 1);
+    const playerTwoMostLossesAgainst = mostAgainst(playerTwoGamesL, 1);
 
     const playerOneNew = {
       name: playerOneName,
