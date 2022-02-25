@@ -3,7 +3,7 @@ import "./AddPlayerForm.scss";
 import axios from "axios";
 import { PLAYERS_API } from "../../utils/api";
 
-export default function AddPlayerForm({ getPlayersList }) {
+export default function AddPlayerForm({ players, getPlayersList }) {
   const [formValid, setFormValid] = useState(true);
   const [form, setForm] = useState({
     playerName: "",
@@ -16,13 +16,33 @@ export default function AddPlayerForm({ getPlayersList }) {
   const isFormValid = () => {
     let formValid = true;
 
-    let playerName = document.querySelector(".player-check");
+    let playerNameInput = document.querySelector(".player-check");
 
     if (!form.playerName) {
-      playerName.classList.add("show");
+      playerNameInput.classList.add("show");
       formValid = false;
     } else {
-      playerName.classList.remove("show");
+      playerNameInput.classList.remove("show");
+    }
+
+    //check the player name isn't already taken
+
+    let nameUsed = document.querySelector(".name-used");
+
+    let nameNotUsed = true;
+    for (let i = 0; i < players.length; i++) {
+      console.log(players[i].name, form.playerName);
+      if (players[i].name == form.playerName) {
+        nameNotUsed = false;
+        break;
+      }
+    }
+    console.log(nameNotUsed);
+    if (!nameNotUsed) {
+      nameUsed.classList.add("show");
+      formValid = false;
+    } else {
+      nameUsed.classList.remove("show");
     }
 
     //make axios call
@@ -68,6 +88,9 @@ export default function AddPlayerForm({ getPlayersList }) {
 
       <p className="add-player-form__error-text player-check">
         This field is required
+      </p>
+      <p className="add-player-form__error-text name-used">
+        That name is already used
       </p>
       <input
         className="button add-player-form__submit"
