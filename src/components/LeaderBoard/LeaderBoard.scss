@@ -12,6 +12,11 @@
     justify-content: space-around;
     width: 100%;
     border-top: 1px solid #000;
+    &:nth-child(2) {
+      .crown {
+        display: inline-block;
+      }
+    }
     &-value {
       padding: 1rem;
       &:nth-child(odd) {
@@ -42,4 +47,8 @@
 
 .bold {
   font-weight: 800;
+}
+
+.crown {
+  display: none;
 }

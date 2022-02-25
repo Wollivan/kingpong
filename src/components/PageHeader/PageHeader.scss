@@ -7,5 +7,15 @@
   padding: 3rem;
 }
 .version {
-  font-size: 1rem;
+  font-size: 0.8rem;
+}
+
+.blink {
+  animation: blink-animation 1s steps(2, start) infinite;
+  display: inline;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
 }

@@ -10,7 +10,9 @@ export default function LeaderBoard({ players }) {
     let output = sortedPlayers.map((player) => {
       return (
         <div className="leaderboard__item" key={player.name}>
-          <div className="leaderboard__item-value">{player.name}</div>
+          <div className="leaderboard__item-value">
+            {player.name} <span className="crown">👑</span>
+          </div>
           <div className="leaderboard__item-value">{player.wins}</div>
           <div className="leaderboard__item-value">{player.losses}</div>
           <div className="leaderboard__item-value">{player.perfectGames}</div>
