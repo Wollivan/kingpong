@@ -1,52 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "./LeaderBoard.scss";
-import { PLAYERS_API, GAMES_API } from "../../utils/api";
+import AddGameForm from "../AddGameForm/AddGameForm";
 
-export default function LeaderBoard() {
-  const [players, setPlayers] = useState([]);
-  const [games, setGames] = useState([]);
-
-  useEffect(() => {
-    getPlayersList();
-    getGamesList();
-    console.log("test");
-  }, []);
-
-  const getPlayersList = () => {
-    axios
-      .get(PLAYERS_API)
-      .then((response) => {
-        console.log(response);
-        setPlayers(response.data);
-      })
-      .catch((err) =>
-        console.log(
-          "Something went wrong while fetching the player list data: ",
-          err
-        )
-      );
-  };
-
-  const getGamesList = () => {
-    axios
-      .get(GAMES_API)
-      .then((response) => {
-        console.log(response);
-        setGames(response.data);
-      })
-      .catch((err) =>
-        console.log(
-          "Something went wrong while fetching the player list data: ",
-          err
-        )
-      );
-  };
-
+export default function LeaderBoard({ players }) {
   const getLeaderBoard = () => {
-    // return "test";
-    // return games.filter((game) => game.playerOneId === 1);
-    // console.log(players);
     const sortedPlayers = players.sort((a, b) => {
       return b.wins - a.wins;
     });
@@ -58,10 +15,10 @@ export default function LeaderBoard() {
           <div className="leaderboard__item-value">{player.losses}</div>
           <div className="leaderboard__item-value">{player.perfectGames}</div>
           <div className="leaderboard__item-value">
-            {parseFloat(player.avgScore).toFixed(2)}
+            {player.avgScore ? parseFloat(player.avgScore).toFixed(2) : "-"}
           </div>
           <div className="leaderboard__item-value">
-            {parseFloat(player.avgOpScore).toFixed(2)}
+            {player.avgOpScore ? parseFloat(player.avgOpScore).toFixed(2) : "-"}
           </div>
           <div className="leaderboard__item-value">
             {player.mostWinsAgainst}
@@ -75,21 +32,24 @@ export default function LeaderBoard() {
     return output;
   };
 
-  if (games && players) {
+  if (players) {
     return (
-      <div className="leaderboard">
-        <div className="leaderboard__item--header">
-          <div className="leaderboard__item-value bold">Name</div>
-          <div className="leaderboard__item-value">Wins</div>
-          <div className="leaderboard__item-value">Losses</div>
-          <div className="leaderboard__item-value">Perfect Games</div>
-          <div className="leaderboard__item-value">Avg Score</div>
-          <div className="leaderboard__item-value">Avg Op. Score</div>
-          <div className="leaderboard__item-value">Most Wins Against</div>
-          <div className="leaderboard__item-value">Most Losses Against</div>
+      <>
+        {" "}
+        <div className="leaderboard">
+          <div className="leaderboard__item--header">
+            <div className="leaderboard__item-value bold">Name</div>
+            <div className="leaderboard__item-value">Wins</div>
+            <div className="leaderboard__item-value">Losses</div>
+            <div className="leaderboard__item-value">Perfect Games</div>
+            <div className="leaderboard__item-value">Avg Score</div>
+            <div className="leaderboard__item-value">Avg Op. Score</div>
+            <div className="leaderboard__item-value">Most Wins Against</div>
+            <div className="leaderboard__item-value">Most Losses Against</div>
+          </div>
+          {getLeaderBoard()}
         </div>
-        {getLeaderBoard()}
-      </div>
+      </>
     );
   } else {
     return "loading";

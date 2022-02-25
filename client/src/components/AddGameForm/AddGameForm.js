@@ -3,7 +3,7 @@ import "./AddGameForm.scss";
 import axios from "axios";
 import { GAMES_API, PLAYERS_API } from "../../utils/api";
 
-export default function AddGameForm({ formTemplate }) {
+export default function AddGameForm({ players, getPlayersList, getGamesList }) {
   const [formValid, setFormValid] = useState(true);
   const [form, setForm] = useState({
     playerOneName: "",
@@ -52,27 +52,7 @@ export default function AddGameForm({ formTemplate }) {
     //make axios call
     if (formValid) {
       //add a new game
-      axios
-        .post(GAMES_API, form)
-        .then((response) => {
-          console.log("New game done");
-          //post games returns array of two objects (these are the players)
-          // const playerOne = response.data[0];
-          // const playerTwo = response.data[1];
-          // //edit player one
-          // axios
-          //   .put(`${PLAYERS_API}/${playerOne.name}`, playerOne)
-          //   .then(() => {
-          //     //edit plaer two
-          //     console.log("player one done");
-          //     axios
-          //       .put(`${PLAYERS_API}/${playerTwo.name}`, playerTwo)
-          //       .then(() => console.log("players updated!"))
-          //       .catch();
-          //   })
-          //   .catch();
-        })
-        .catch();
+      return true;
     } else {
       return false;
     }
@@ -85,8 +65,19 @@ export default function AddGameForm({ formTemplate }) {
       setFormValid(true);
       axios
         .post(GAMES_API, form)
-        .then(() => console.log("it worked (we think)"))
-        .catch();
+        .then(() => {
+          setForm({
+            playerOneName: "",
+            playerTwoName: "",
+            playerOneScore: "",
+            playerTwoScore: "",
+          });
+          getPlayersList();
+          getGamesList();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
       setFormValid(false);
     }
@@ -94,23 +85,30 @@ export default function AddGameForm({ formTemplate }) {
 
   return (
     <form className="add-game-form" onSubmit={handleSubmit}>
+      <h3>New Game</h3>
       <div className="add-game-form__name-wrap">
-        <input
+        <select
           name="playerOneName"
-          type="text"
-          placeholder="Player One"
           className="add-game-form__input--half"
           value={form.playerOneName}
           onChange={handleChange}
-        />
-        <input
+        >
+          <option>- Player One -</option>
+          {players.map((player) => {
+            return <option value={player.name}>{player.name}</option>;
+          })}
+        </select>
+        <select
           name="playerTwoName"
-          type="text"
-          placeholder="Player Two"
           className="add-game-form__input--half"
           value={form.playerTwoName}
           onChange={handleChange}
-        />
+        >
+          <option>- Player Two -</option>
+          {players.map((player) => {
+            return <option value={player.name}>{player.name}</option>;
+          })}
+        </select>
       </div>
       <div className="add-game-form__name-wrap">
         <p className="add-game-form__error-text player-one-check">

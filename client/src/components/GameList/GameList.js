@@ -3,41 +3,27 @@ import axios from "axios";
 import "./GameList.scss";
 import { GAMES_API } from "../../utils/api";
 
-export default function GameList() {
-  const [games, setGames] = useState([]);
-
-  useEffect(() => {
-    getGamesList();
-  }, []);
-
-  const getGamesList = () => {
-    axios
-      .get(GAMES_API)
-      .then((response) => {
-        console.log(response);
-        setGames(response.data);
-      })
-      .catch((err) =>
-        console.log(
-          "Something went wrong while fetching the player list data: ",
-          err
-        )
-      );
-  };
-
+export default function GameList({ games }) {
   const getOutput = () => {
     let output = games.map((game) => {
       return (
-        <div className="game-list__item" key={game.gameId}>
-          <div className="game-list__item-player-one">{game.playerOneName}</div>
-          <div className="game-list__item-player-one-score">
-            {game.playerOneScore}
+        <div className="games__game-list-item" key={game.gameId}>
+          <div className="games__game-list-item-date">{game.gameDate}</div>
+          <div className="games__game-list-item-details">
+            <div className="games__game-list-item-details-player-one">
+              {game.playerOneName}
+            </div>
+            <div className="games__game-list-item-details-player-one-score">
+              {game.playerOneScore}
+            </div>
+            <div className="games__game-list-item-details-v">v</div>
+            <div className="games__game-list-item-details-player-two-score">
+              {game.playerTwoScore}
+            </div>
+            <div className="games__game-list-item-details-player-two">
+              {game.playerTwoName}
+            </div>
           </div>
-          <div className="game-list__item-v">v</div>
-          <div className="game-list__item-player-two-score">
-            {game.playerTwoScore}
-          </div>
-          <div className="game-list__item-player-two">{game.playerTwoName}</div>
         </div>
       );
     });
@@ -46,9 +32,9 @@ export default function GameList() {
 
   if (games) {
     return (
-      <div className="game-list">
-        <h2>Games</h2>
-        {getOutput()}
+      <div className="games">
+        <h2 className="center">Games</h2>
+        <div className="games__game-list">{getOutput()}</div>
       </div>
     );
   } else {

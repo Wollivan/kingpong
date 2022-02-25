@@ -3,7 +3,7 @@
 @use "../../styles/partials/breakpoints" as bp;
 @use "../../styles/partials/buttons";
 
-.add-game-form {
+.add-player-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,14 +28,11 @@
     padding: 1rem;
 
     &--half {
-      @extend .add-game-form__input;
+      @extend .add-player-form__input;
       width: 48%;
     }
   }
-  .player-one-check,
-  .player-one-score-check,
-  .player-two-check,
-  .player-two-score-check {
+  .player-check {
     display: none;
   }
 
