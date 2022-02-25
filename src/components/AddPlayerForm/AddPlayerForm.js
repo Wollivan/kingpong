@@ -31,13 +31,12 @@ export default function AddPlayerForm({ players, getPlayersList }) {
 
     let nameNotUsed = true;
     for (let i = 0; i < players.length; i++) {
-      console.log(players[i].name, form.playerName);
       if (players[i].name == form.playerName) {
         nameNotUsed = false;
         break;
       }
     }
-    console.log(nameNotUsed);
+
     if (!nameNotUsed) {
       nameUsed.classList.add("show");
       formValid = false;
@@ -56,7 +55,7 @@ export default function AddPlayerForm({ players, getPlayersList }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
+
     if (isFormValid()) {
       setFormValid(true);
       axios

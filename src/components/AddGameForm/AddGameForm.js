@@ -60,7 +60,7 @@ export default function AddGameForm({ players, getPlayersList, getGamesList }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
+
     if (isFormValid()) {
       setFormValid(true);
       axios
