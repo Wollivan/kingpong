@@ -45,8 +45,10 @@
       }
       &--pos {
         @extend .leaderboard__item-value;
-        width: 6%;
         text-align: center;
+        @include bp.medium {
+          width: 6%;
+        }
       }
       &--header {
         @extend .leaderboard__item-value;
