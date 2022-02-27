@@ -16,7 +16,7 @@
     &:first-of-type {
       border: none;
     }
-    &:nth-child(odd) {
+    &:nth-child(even) {
       background-color: v.$secondary-color;
       color: #fff;
     }
