@@ -3,7 +3,11 @@ import "./AddPlayerForm.scss";
 import axios from "axios";
 import { PLAYERS_API } from "../../utils/api";
 
-export default function AddPlayerForm({ players, getPlayersList }) {
+export default function AddPlayerForm({
+  players,
+  getPlayersList,
+  getGamesList,
+}) {
   const [formValid, setFormValid] = useState(true);
   const [form, setForm] = useState({
     playerName: "",
@@ -65,6 +69,7 @@ export default function AddPlayerForm({ players, getPlayersList }) {
             playerName: "",
           });
           getPlayersList();
+          getGamesList();
         })
         .catch((err) => {
           console.log(err);

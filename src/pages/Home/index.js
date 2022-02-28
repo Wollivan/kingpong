@@ -51,7 +51,11 @@ export default function Home() {
         getPlayersList={getPlayersList}
         getGamesList={getPlayersList}
       />
-      <AddPlayerForm players={players} getPlayersList={getPlayersList} />
+      <AddPlayerForm
+        players={players}
+        getPlayersList={getPlayersList}
+        getGamesList={getGamesList}
+      />
       <GameList games={games} />
     </div>
   );
