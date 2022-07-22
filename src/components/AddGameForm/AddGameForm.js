@@ -87,65 +87,69 @@ export default function AddGameForm({ players, getPlayersList, getGamesList }) {
     <form className="add-game-form" onSubmit={handleSubmit}>
       <h3>New Game</h3>
       <div className="add-game-form__name-wrap">
-        <select
-          name="playerOneName"
-          className="add-game-form__input--half"
-          value={form.playerOneName}
-          onChange={handleChange}
-        >
-          <option>- Player One -</option>
-          {players.map((player) => {
-            return <option value={player.name}>{player.name}</option>;
-          })}
-        </select>
-        <select
-          name="playerTwoName"
-          className="add-game-form__input--half"
-          value={form.playerTwoName}
-          onChange={handleChange}
-        >
-          <option>- Player Two -</option>
-          {players.map((player) => {
-            return <option value={player.name}>{player.name}</option>;
-          })}
-        </select>
+        <div className="add-game-form__name-wrap-items">
+          <select
+            name="playerOneName"
+            className="add-game-form__input"
+            value={form.playerOneName}
+            onChange={handleChange}
+          >
+            <option>- Player One -</option>
+            {players.map((player) => {
+              return <option value={player.name}>{player.name}</option>;
+            })}
+          </select>
+          <p className="add-game-form__error-text player-one-check">
+            This field is required 1n
+          </p>
+        </div>
+        <div className="add-game-form__name-wrap-items">
+          <input
+            name="playerOneScore"
+            type="text"
+            placeholder="Player One Score"
+            className="add-game-form__input"
+            value={form.playerOneScore}
+            onChange={handleChange}
+          />
+          <p className="add-game-form__error-text player-one-score-check">
+            This field is required 1s
+          </p>
+        </div>
       </div>
+      <div className="add-game-form__name-wrap"></div>
       <div className="add-game-form__name-wrap">
-        <p className="add-game-form__error-text player-one-check">
-          This field is required
-        </p>
-
-        <p className="add-game-form__error-text player-two-check">
-          This field is required
-        </p>
+        <div className="add-game-form__name-wrap-items">
+          <select
+            name="playerTwoName"
+            className="add-game-form__input"
+            value={form.playerTwoName}
+            onChange={handleChange}
+          >
+            <option>- Player Two -</option>
+            {players.map((player) => {
+              return <option value={player.name}>{player.name}</option>;
+            })}
+          </select>
+          <p className="add-game-form__error-text player-two-check">
+            This field is required 2n
+          </p>
+        </div>
+        <div className="add-game-form__name-wrap-items">
+          <input
+            name="playerTwoScore"
+            type="text"
+            placeholder="Player Two Score"
+            className="add-game-form__input"
+            value={form.playerTwoScore}
+            onChange={handleChange}
+          />
+          <p className="add-game-form__error-text player-two-score-check">
+            This field is required 2s
+          </p>
+        </div>
       </div>
-      <div className="add-game-form__name-wrap">
-        <input
-          name="playerOneScore"
-          type="text"
-          placeholder="Player One Score"
-          className="add-game-form__input--half"
-          value={form.playerOneScore}
-          onChange={handleChange}
-        />
-        <input
-          name="playerTwoScore"
-          type="text"
-          placeholder="Player Two Score"
-          className="add-game-form__input--half"
-          value={form.playerTwoScore}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="add-game-form__name-wrap">
-        <p className="add-game-form__error-text player-one-score-check">
-          This field is required
-        </p>
-
-        <p className="add-game-form__error-text player-two-score-check">
-          This field is required
-        </p>
-      </div>
+      <div className="add-game-form__name-wrap"></div>
 
       <input
         className="button add-game-form__submit"
