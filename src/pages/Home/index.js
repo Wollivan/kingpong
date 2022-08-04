@@ -46,7 +46,6 @@ export default function Home() {
 
   const toggleDetails = () => {
     setDetails(!details);
-    console.log(details);
   };
   return (
     <div>
