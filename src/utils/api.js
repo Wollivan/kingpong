@@ -1,6 +1,6 @@
 // Local server url
 
-export const API_URL = "https://kingpongscores-server.herokuapp.com";
+export const API_URL = "https://kingpong-server.herokuapp.com";
 // export const API_URL = "http://localhost:8080";
 
 // Urls to be used in Axios calls
