@@ -1,21 +1,49 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./LeaderBoard.scss";
-import AddGameForm from "../AddGameForm/AddGameForm";
 
-export default function LeaderBoard({ players }) {
+export default function LeaderBoard({ players, details, toggleDetails }) {
   const getLeaderBoard = () => {
     // get the players points
     players.forEach((player) => {
-      const winPoints = parseInt(player.wins) * 3;
-      const lossPoints = parseInt(player.losses) * 1;
+      //points
+      const winPoints = parseFloat(player.wins) * 3;
+      const lossPoints = parseFloat(player.losses) * 1;
       const totalPoints = winPoints + lossPoints;
-
       player.points = totalPoints;
+
+      //win rate
+      //W/ (W+L) * 100
+      const winRate =
+        parseFloat(player.wins) /
+        (parseFloat(player.wins) + parseFloat(player.losses));
+      player.winRate = winRate;
+
+      // point difference
+      const pointDiff =
+        parseFloat(player.avgScore) - parseFloat(player.avgOpScore);
+      player.pointDiff = pointDiff;
     });
 
+    // get the players W/L
+    players.forEach((player) => {});
+
+    //sort by win rate. In case of a draw, point diff is used
     const sortedPlayers = players.sort((a, b) => {
-      return b.points - a.points;
+      if (a.winRate === b.winRate) {
+        return b.pointDiff - a.pointDiff;
+      } else if (a.winRate > b.winRate) {
+        return -1;
+      } else if (a.winRate < b.winRate) {
+        return 1;
+      }
+
+      //return so it stops moaning
+      return 1;
     });
+
+    // const sortedPlayers = players.sort((a, b) => {
+    //   return b.points - a.points;
+    // });
 
     // is this magic?!
     function ordinal_suffix_of(i) {
@@ -42,44 +70,50 @@ export default function LeaderBoard({ players }) {
             {ordinal_suffix_of(index + 1)}
           </div>
           <div className="leaderboard__item-value">
-            <span className="leaderboard__item-value-mobile-label">
-              Points{" "}
-            </span>
-            {player.points}
-          </div>
-          <div className="leaderboard__item-value">
             <span className="leaderboard__item-value-mobile-label">Name </span>
             {player.name} {index === 0 ? " 👑" : ""}
           </div>
           <div className="leaderboard__item-value">
+            <span className="leaderboard__item-value-mobile-label">
+              Win Rate
+            </span>
+            {player.winRate ? parseFloat(player.winRate).toFixed(2) : "0"}
+          </div>
+          <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">Wins </span>
             {player.wins}
           </div>
-          <div className="leaderboard__item-value">
+          <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">
               Losses{" "}
             </span>
             {player.losses}
           </div>
-          <div className="leaderboard__item-value">
+          <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">
               Perfect Games{" "}
             </span>
             {player.perfectGames}
           </div>
-          <div className="leaderboard__item-value">
+          <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">
               Avg Score{" "}
             </span>
             {player.avgScore ? parseFloat(player.avgScore).toFixed(2) : "-"}
           </div>
-          <div className="leaderboard__item-value">
+          <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">
               Avg Op. Score{" "}
             </span>
             {player.avgOpScore ? parseFloat(player.avgOpScore).toFixed(2) : "-"}
           </div>
-          <div className="leaderboard__item-value">
+          <div className="leaderboard__item-value canhide">
+            <span className="leaderboard__item-value-mobile-label">
+              Avg Point Diff{" "}
+            </span>
+            {player.pointDiff ? parseFloat(player.pointDiff).toFixed(2) : "-"}
+          </div>
+          {/* <div className="leaderboard__item-value">
             <span className="leaderboard__item-value-mobile-label">
               Most Wins Against{" "}
             </span>
@@ -90,7 +124,7 @@ export default function LeaderBoard({ players }) {
               Most Losses Against{" "}
             </span>
             {player.mostLossesAgainst}
-          </div>
+          </div> */}
         </div>
       );
     });
@@ -100,19 +134,24 @@ export default function LeaderBoard({ players }) {
   if (players) {
     return (
       <>
-        {" "}
-        <div className="leaderboard">
+        <button onClick={toggleDetails} className="toggle-details button">
+          {details ? "Show" : "Hide"} Details
+        </button>
+        <div className={`leaderboard ${details ? "hide-details" : ""}`}>
           <div className="leaderboard__item--header">
             <div className="leaderboard__item-value--pos">Pos</div>
-            <div className="leaderboard__item-value">Points</div>
             <div className="leaderboard__item-value">Name</div>
-            <div className="leaderboard__item-value">Wins</div>
-            <div className="leaderboard__item-value">Losses</div>
-            <div className="leaderboard__item-value">Perfect Games</div>
-            <div className="leaderboard__item-value">Avg Score</div>
-            <div className="leaderboard__item-value">Avg Op. Score</div>
-            <div className="leaderboard__item-value">Most Wins Against</div>
-            <div className="leaderboard__item-value">Most Losses Against</div>
+            <div className="leaderboard__item-value">Win Rate</div>
+            <div className="leaderboard__item-value canhide">Wins</div>
+            <div className="leaderboard__item-value canhide">Losses</div>
+            <div className="leaderboard__item-value canhide">Perfect Games</div>
+            <div className="leaderboard__item-value canhide">
+              Avg Point Diff
+            </div>
+            <div className="leaderboard__item-value canhide">Avg Score</div>
+            <div className="leaderboard__item-value canhide">Avg Op. Score</div>
+            {/* <div className="leaderboard__item-value">Most Wins Against</div>
+            <div className="leaderboard__item-value">Most Losses Against</div> */}
           </div>
           {getLeaderBoard()}
         </div>

@@ -9,6 +9,7 @@ import AddPlayerForm from "../../components/AddPlayerForm/AddPlayerForm";
 export default function Home() {
   const [players, setPlayers] = useState([]);
   const [games, setGames] = useState([]);
+  const [details, setDetails] = useState(true);
 
   useEffect(() => {
     getPlayersList();
@@ -43,9 +44,17 @@ export default function Home() {
       );
   };
 
+  const toggleDetails = () => {
+    setDetails(!details);
+    console.log(details);
+  };
   return (
     <div>
-      <LeaderBoard players={players} />
+      <LeaderBoard
+        players={players}
+        details={details}
+        toggleDetails={toggleDetails}
+      />
       <AddGameForm
         players={players}
         getPlayersList={getPlayersList}

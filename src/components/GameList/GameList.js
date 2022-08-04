@@ -8,7 +8,9 @@ export default function GameList({ games }) {
     let output = games.map((game, i) => {
       return (
         <div className="games__game-list-item" key={i}>
-          <div className="games__game-list-item-date">{game.gameDate}</div>
+          <div className="games__game-list-item-date">
+            {game.gameDate.substr(0, game.gameDate.indexOf("T"))}
+          </div>
           <div className="games__game-list-item-details">
             <div className="games__game-list-item-details-player-one">
               {game.playerOneName}

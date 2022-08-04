@@ -3,8 +3,12 @@
 @use "../../styles/partials/breakpoints" as bp;
 
 .games {
-  width: 50%;
+  width: 90%;
   margin: 0 auto;
+
+  @include bp.large {
+    width: 50%;
+  }
   &__game-list {
     display: flex;
     flex-direction: column;

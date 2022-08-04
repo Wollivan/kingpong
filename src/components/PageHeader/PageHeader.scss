@@ -5,6 +5,9 @@
 .header {
   text-align: center;
   padding: 3rem;
+  &__logo {
+    max-width: 100%;
+  }
 }
 .version {
   font-size: 0.8rem;

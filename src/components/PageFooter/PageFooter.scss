@@ -6,3 +6,12 @@
   padding: 5rem 3rem 1rem 3rem;
   text-align: center;
 }
+
+.nolinkstyle {
+  color: #000;
+  text-decoration: none;
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}

@@ -84,3 +84,19 @@
 .bold {
   font-weight: 800;
 }
+
+.toggle-details {
+  display: block;
+  margin-left: auto;
+  @include bp.large {
+    display: none;
+  }
+}
+.hide-details {
+  .canhide {
+    display: none;
+    @include bp.large {
+      display: flex;
+    }
+  }
+}

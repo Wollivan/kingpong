@@ -1,6 +1,9 @@
 // Local server url
 
-export const API_URL = "https://kingpong-server.herokuapp.com";
+export const API_URL =
+  "https://kingpong-server.netlify.app/.netlify/functions/api";
+// export const API_URL = "http://localhost:9000/.netlify/functions/api";
+
 // export const API_URL = "http://localhost:8080";
 
 // Urls to be used in Axios calls
