@@ -5,9 +5,9 @@ import { GAMES_API } from "../../utils/api";
 
 export default function GameList({ games }) {
   const getOutput = () => {
-    let output = games.map((game) => {
+    let output = games.map((game, i) => {
       return (
-        <div className="games__game-list-item" key={game.gameId}>
+        <div className="games__game-list-item" key={i}>
           <div className="games__game-list-item-date">{game.gameDate}</div>
           <div className="games__game-list-item-details">
             <div className="games__game-list-item-details-player-one">

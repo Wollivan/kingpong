@@ -15,6 +15,7 @@ export default function AddPlayerForm({
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    console.log(form);
   };
 
   const isFormValid = () => {
@@ -62,6 +63,7 @@ export default function AddPlayerForm({
 
     if (isFormValid()) {
       setFormValid(true);
+      console.log(form);
       axios
         .post(PLAYERS_API, form)
         .then(() => {

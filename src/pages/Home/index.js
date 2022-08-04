@@ -49,7 +49,7 @@ export default function Home() {
       <AddGameForm
         players={players}
         getPlayersList={getPlayersList}
-        getGamesList={getPlayersList}
+        getGamesList={getGamesList}
       />
       <AddPlayerForm
         players={players}

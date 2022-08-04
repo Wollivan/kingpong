@@ -4,21 +4,30 @@ import AddGameForm from "../AddGameForm/AddGameForm";
 
 export default function LeaderBoard({ players }) {
   const getLeaderBoard = () => {
+    // get the players points
+    players.forEach((player) => {
+      const winPoints = parseInt(player.wins) * 3;
+      const lossPoints = parseInt(player.losses) * 1;
+      const totalPoints = winPoints + lossPoints;
+
+      player.points = totalPoints;
+    });
+
     const sortedPlayers = players.sort((a, b) => {
-      return b.wins - a.wins;
+      return b.points - a.points;
     });
 
     // is this magic?!
     function ordinal_suffix_of(i) {
       let j = i % 10;
       let k = i % 100;
-      if (j == 1 && k != 11) {
+      if (j === 1 && k !== 11) {
         return i + "st";
       }
-      if (j == 2 && k != 12) {
+      if (j === 2 && k !== 12) {
         return i + "nd";
       }
-      if (j == 3 && k != 13) {
+      if (j === 3 && k !== 13) {
         return i + "rd";
       }
       return i + "th";
@@ -33,8 +42,14 @@ export default function LeaderBoard({ players }) {
             {ordinal_suffix_of(index + 1)}
           </div>
           <div className="leaderboard__item-value">
+            <span className="leaderboard__item-value-mobile-label">
+              Points{" "}
+            </span>
+            {player.points}
+          </div>
+          <div className="leaderboard__item-value">
             <span className="leaderboard__item-value-mobile-label">Name </span>
-            {player.name} {index == 0 ? " 👑" : ""}
+            {player.name} {index === 0 ? " 👑" : ""}
           </div>
           <div className="leaderboard__item-value">
             <span className="leaderboard__item-value-mobile-label">Wins </span>
@@ -89,6 +104,7 @@ export default function LeaderBoard({ players }) {
         <div className="leaderboard">
           <div className="leaderboard__item--header">
             <div className="leaderboard__item-value--pos">Pos</div>
+            <div className="leaderboard__item-value">Points</div>
             <div className="leaderboard__item-value">Name</div>
             <div className="leaderboard__item-value">Wins</div>
             <div className="leaderboard__item-value">Losses</div>

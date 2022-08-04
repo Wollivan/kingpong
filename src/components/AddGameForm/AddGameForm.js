@@ -95,8 +95,12 @@ export default function AddGameForm({ players, getPlayersList, getGamesList }) {
             onChange={handleChange}
           >
             <option>- Player One -</option>
-            {players.map((player) => {
-              return <option value={player.name}>{player.name}</option>;
+            {players.map((player, i) => {
+              return (
+                <option value={player.name} key={i}>
+                  {player.name}
+                </option>
+              );
             })}
           </select>
           <p className="add-game-form__error-text player-one-check">
@@ -127,8 +131,12 @@ export default function AddGameForm({ players, getPlayersList, getGamesList }) {
             onChange={handleChange}
           >
             <option>- Player Two -</option>
-            {players.map((player) => {
-              return <option value={player.name}>{player.name}</option>;
+            {players.map((player, i) => {
+              return (
+                <option value={player.name} key={i}>
+                  {player.name}
+                </option>
+              );
             })}
           </select>
           <p className="add-game-form__error-text player-two-check">
