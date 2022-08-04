@@ -24,16 +24,13 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
       player.pointDiff = pointDiff;
     });
 
-    // get the players W/L
-    players.forEach((player) => {});
-
-    //sort by win rate. In case of a draw, point diff is used
+    //sort by elo. In case of a draw, point diff is used
     const sortedPlayers = players.sort((a, b) => {
-      if (a.winRate === b.winRate) {
+      if (a.elo === b.elo) {
         return b.pointDiff - a.pointDiff;
-      } else if (a.winRate > b.winRate) {
+      } else if (a.elo > b.elo) {
         return -1;
-      } else if (a.winRate < b.winRate) {
+      } else if (a.elo < b.elo) {
         return 1;
       }
 
@@ -74,10 +71,8 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
             {player.name} {index === 0 ? " 👑" : ""}
           </div>
           <div className="leaderboard__item-value">
-            <span className="leaderboard__item-value-mobile-label">
-              Win Rate
-            </span>
-            {player.winRate ? parseFloat(player.winRate).toFixed(2) : "0"}
+            <span className="leaderboard__item-value-mobile-label">Elo</span>
+            {player.elo}
           </div>
           <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">Wins </span>
@@ -141,7 +136,7 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
           <div className="leaderboard__item--header">
             <div className="leaderboard__item-value--pos">Pos</div>
             <div className="leaderboard__item-value">Name</div>
-            <div className="leaderboard__item-value">Win Rate</div>
+            <div className="leaderboard__item-value">Elo</div>
             <div className="leaderboard__item-value canhide">Wins</div>
             <div className="leaderboard__item-value canhide">Losses</div>
             <div className="leaderboard__item-value canhide">Perfect Games</div>

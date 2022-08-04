@@ -15,10 +15,17 @@ export default function PageHeader() {
       <p>worlds most competetive table tennis environment</p>
       <br />
       <br />
-      <p>rank is decided by highest win rate, then point difference</p>
+      <p>rank is determined by elo rating system, then point difference</p>{" "}
       <br />
       <br />
-      <p>win rate = W / (W+L)</p>
+      <p>
+        elo = win makes rating go up, loss makes rating go down. difference in
+        opponents elo determines by how much
+      </p>
+      {/* <p>rank is decided by highest win rate, then point difference</p> */}
+      <br />
+      <br />
+      {/* <p>win rate = W / (W+L)</p> */}
       <p>point difference = difference in points</p>
     </header>
   );
