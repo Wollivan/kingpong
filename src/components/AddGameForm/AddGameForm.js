@@ -111,6 +111,7 @@ export default function AddGameForm({ players, getPlayersList, getGamesList }) {
           <input
             name="playerOneScore"
             type="number"
+            autocomplete="off"
             placeholder="Player One Score"
             className="add-game-form__input"
             value={form.playerOneScore}
@@ -147,6 +148,7 @@ export default function AddGameForm({ players, getPlayersList, getGamesList }) {
           <input
             name="playerTwoScore"
             type="number"
+            autocomplete="off"
             placeholder="Player Two Score"
             className="add-game-form__input"
             value={form.playerTwoScore}
