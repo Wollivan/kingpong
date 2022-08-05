@@ -110,7 +110,7 @@ export default function AddGameForm({ players, getPlayersList, getGamesList }) {
         <div className="add-game-form__name-wrap-items">
           <input
             name="playerOneScore"
-            type="text"
+            type="number"
             placeholder="Player One Score"
             className="add-game-form__input"
             value={form.playerOneScore}
@@ -146,7 +146,7 @@ export default function AddGameForm({ players, getPlayersList, getGamesList }) {
         <div className="add-game-form__name-wrap-items">
           <input
             name="playerTwoScore"
-            type="text"
+            type="number"
             placeholder="Player Two Score"
             className="add-game-form__input"
             value={form.playerTwoScore}
