@@ -72,7 +72,7 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
           </div>
           <div className="leaderboard__item-value">
             <span className="leaderboard__item-value-mobile-label">Win Rate</span>
-            {player.winRate}
+            {player.winRate ? parseFloat(player.winRate).toFixed(2) : "-"}
           </div>
           <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">Wins </span>
