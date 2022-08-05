@@ -584,6 +584,9 @@ export default function AddGameForm({ players, getPlayersList, getGamesList }) {
         value="Submit"
         id="input-submit"
       />
+      <p className="center">
+        player stats are recalculated after each new game is submmited
+      </p>
     </form>
   );
 }

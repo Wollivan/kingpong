@@ -10,7 +10,7 @@ export default function PageHeader() {
       <img src={kingpong} alt="kingpong logo" className="header__logo" />
       <h1>
         kingpong
-        <span className="blink">_</span>{" "}
+        <span className="blink">_</span> <span className="version">beta</span>
       </h1>
       <h3>worlds most competetive table tennis environment</h3>
       <br />
