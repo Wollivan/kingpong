@@ -17,15 +17,12 @@ export default function PageHeader() {
       <br />
       <p>rank is determined by win rate, then elo, then point difference</p>{" "}
       <br />
-      <br />
       <p>win rate = W / (W+L)</p>
-      <br />
       <br />
       <p>
         elo = win makes rating go up, loss makes rating go down. difference in
         opponents elo determines by how much
       </p>
-      <br />
       <br />
       <p>point difference = difference in points</p>
     </header>
