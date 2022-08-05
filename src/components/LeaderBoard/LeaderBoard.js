@@ -108,17 +108,17 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
             </span>
             {player.pointDiff ? parseFloat(player.pointDiff).toFixed(2) : "-"}
           </div>
-          <div className="leaderboard__item-value">
+          <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">Elo</span>
             {player.elo}
           </div>
-          {/* <div className="leaderboard__item-value">
+          {/* <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">
               Most Wins Against{" "}
             </span>
             {player.mostWinsAgainst}
           </div>
-          <div className="leaderboard__item-value">
+          <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">
               Most Losses Against{" "}
             </span>
@@ -149,7 +149,7 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
             </div>
             <div className="leaderboard__item-value canhide">Avg Score</div>
             <div className="leaderboard__item-value canhide">Avg Op. Score</div>
-            <div className="leaderboard__item-value">Elo</div>
+            <div className="leaderboard__item-value canhide">Elo</div>
             {/* <div className="leaderboard__item-value">Most Wins Against</div>
             <div className="leaderboard__item-value">Most Losses Against</div> */}
           </div>
