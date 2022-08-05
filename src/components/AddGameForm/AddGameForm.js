@@ -67,8 +67,8 @@ export default function AddGameForm({ players, getPlayersList, getGamesList }) {
         .post(GAMES_API, form)
         .then(() => {
           setForm({
-            // playerOneName: "",
-            // playerTwoName: "",
+            playerOneName: "",
+            playerTwoName: "",
             playerOneScore: "",
             playerTwoScore: "",
           });
