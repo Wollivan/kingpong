@@ -27,7 +27,12 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
     //sort by elo. In case of a draw, point diff is used
     const sortedPlayers = players.sort((a, b) => {
       if (a.winRate === b.winRate) {
-        return b.elo - a.elo;
+        return b.pointDiff - a.pointDiff;
+        // if (a.elo === b.elo) {
+        //   return b.pointDiff - a.pointDiff;
+        // } else {
+        //   return b.elo - a.elo;
+        // }
       } else if (a.winRate > b.winRate) {
         return -1;
       } else if (a.winRate < b.winRate) {
@@ -71,7 +76,9 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
             {player.name} {index === 0 ? " 👑" : ""}
           </div>
           <div className="leaderboard__item-value">
-            <span className="leaderboard__item-value-mobile-label">Win Rate</span>
+            <span className="leaderboard__item-value-mobile-label">
+              Win Rate
+            </span>
             {player.winRate ? parseFloat(player.winRate).toFixed(2) : "-"}
           </div>
           <div className="leaderboard__item-value canhide">
@@ -108,10 +115,10 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
             </span>
             {player.pointDiff ? parseFloat(player.pointDiff).toFixed(2) : "-"}
           </div>
-          <div className="leaderboard__item-value canhide">
+          {/* <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">Elo</span>
             {player.elo}
-          </div>
+          </div> */}
           {/* <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">
               Most Wins Against{" "}
@@ -144,12 +151,12 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
             <div className="leaderboard__item-value canhide">Wins</div>
             <div className="leaderboard__item-value canhide">Losses</div>
             <div className="leaderboard__item-value canhide">Perfect Games</div>
+            <div className="leaderboard__item-value canhide">Avg Score</div>
+            <div className="leaderboard__item-value canhide">Avg Op. Score</div>
             <div className="leaderboard__item-value canhide">
               Avg Point Diff
             </div>
-            <div className="leaderboard__item-value canhide">Avg Score</div>
-            <div className="leaderboard__item-value canhide">Avg Op. Score</div>
-            <div className="leaderboard__item-value canhide">Elo</div>
+            {/* <div className="leaderboard__item-value canhide">Elo</div> */}
             {/* <div className="leaderboard__item-value">Most Wins Against</div>
             <div className="leaderboard__item-value">Most Losses Against</div> */}
           </div>

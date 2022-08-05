@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import "./GameList.scss";
-import { GAMES_API } from "../../utils/api";
 
 export default function GameList({ games }) {
   const getOutput = () => {

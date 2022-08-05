@@ -12,18 +12,14 @@ export default function PageHeader() {
         kingpong
         <span className="blink">_</span>{" "}
       </h1>
-      <p>worlds most competetive table tennis environment</p>
+      <h3>worlds most competetive table tennis environment</h3>
       <br />
-      <br />
-      <p>rank is determined by win rate, then elo, then point difference</p>{" "}
-      <br />
+      <p>rank is determined by win rate then average point difference</p>{" "}
       <p>win rate = W / (W+L)</p>
-      <br />
-      <p>
-        elo = win makes rating go up, loss makes rating go down. difference in
-        opponents elo determines by how much
-      </p>
-      <br />
+      {/* <p>
+        elo = point increase/decrease on win/loss based on relative skill to
+        opponent
+      </p> */}
       <p>point difference = difference in points</p>
     </header>
   );
