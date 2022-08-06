@@ -1,0 +1,60 @@
+@use "../../styles/partials/variables" as v;
+@use "../../styles/partials/mixins" as m;
+@use "../../styles/partials/breakpoints" as bp;
+@use "../../styles/partials/buttons";
+
+.add-challenge-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 3rem 0;
+  &__name-wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: column;
+    @include bp.medium {
+      flex-direction: row;
+    }
+    &-items {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 0 1rem;
+    }
+  }
+  // width: 50%;
+  &__input {
+    width: 100%;
+    margin-bottom: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0;
+    margin-top: 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    padding: 1rem;
+
+    &--half {
+      @extend .add-challenge-form__input;
+      width: 48%;
+    }
+  }
+  .challenge-player-one-check,
+  .challenge-player-two-check {
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+  &__error-text {
+    margin: 0;
+    color: #ff0000;
+  }
+  &__submit {
+    margin-top: 1.5rem;
+  }
+}

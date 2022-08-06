@@ -1,0 +1,76 @@
+@use "../../styles/partials/variables" as v;
+@use "../../styles/partials/mixins" as m;
+@use "../../styles/partials/breakpoints" as bp;
+
+.challenges {
+  width: 90%;
+  margin: 0 auto;
+
+  @include bp.large {
+    width: 50%;
+  }
+  &__challenge-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    // padding-top: 2rem;
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+
+    &-item {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      border: 1px solid #000;
+      padding: 1rem;
+      background-color: v.$tertiary-color;
+      color: #fff;
+      &:first-child {
+        border-top: none;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+      &-date {
+        align-self: center;
+      }
+      &-details {
+        display: flex;
+        justify-content: center;
+        &-v {
+          width: 10%;
+          text-align: center;
+        }
+        &-player-one {
+          //   padding-right: 1rem;
+          width: 30%;
+          text-align: left;
+        }
+        &-player-one-score {
+          //   padding-right: 1rem;
+          width: 15%;
+          text-align: right;
+        }
+        &-player-two {
+          //   padding-left: 1rem;
+          width: 15%;
+          text-align: right;
+        }
+        &-player-two-score {
+          //   padding-left: 1rem;
+          width: 30%;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+.bold {
+  font-weight: 800;
+}

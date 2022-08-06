@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import PageHeader from "./components/PageHeader/PageHeader";
 import PageFooter from "./components/PageFooter/PageFooter";
 import Home from "./pages/Home/index";
+import LockScreen from "./components/LockScreen/LockScreen";
 
 // import firebase from "firebase/compat/app";
 
@@ -12,6 +13,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
+          <LockScreen />
           <PageHeader />
           <Switch>
             <Route path="/" exact component={Home} />

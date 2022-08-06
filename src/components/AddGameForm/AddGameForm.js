@@ -521,21 +521,21 @@ export default function AddGameForm({ players, getPlayersList, getGamesList }) {
             })}
           </select>
           <p className="add-game-form__error-text player-one-check">
-            This field is required 1n
+            This field is required
           </p>
         </div>
         <div className="add-game-form__name-wrap-items">
           <input
             name="playerOneScore"
             type="number"
-            autocomplete="off"
+            autoComplete="off"
             placeholder="Player One Score"
             className="add-game-form__input"
             value={form.playerOneScore}
             onChange={handleChange}
           />
           <p className="add-game-form__error-text player-one-score-check">
-            This field is required 1s
+            This field is required
           </p>
         </div>
       </div>
@@ -558,21 +558,21 @@ export default function AddGameForm({ players, getPlayersList, getGamesList }) {
             })}
           </select>
           <p className="add-game-form__error-text player-two-check">
-            This field is required 2n
+            This field is required
           </p>
         </div>
         <div className="add-game-form__name-wrap-items">
           <input
             name="playerTwoScore"
             type="number"
-            autocomplete="off"
+            autoComplete="off"
             placeholder="Player Two Score"
             className="add-game-form__input"
             value={form.playerTwoScore}
             onChange={handleChange}
           />
           <p className="add-game-form__error-text player-two-score-check">
-            This field is required 2s
+            This field is required
           </p>
         </div>
       </div>
