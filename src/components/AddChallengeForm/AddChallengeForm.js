@@ -125,7 +125,7 @@ export default function AddChallengeForm({
         id="input-submit"
       />
       <p className="center">
-        challenges are removed when a game between the players is logged
+        challenges are removed when a game between the two players is logged
       </p>
       <p className="center">
         in a future update challenges will show a predicted score using Elo

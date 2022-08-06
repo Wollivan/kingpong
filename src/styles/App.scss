@@ -13,6 +13,11 @@
   padding: 0 5%;
   background-color: v.$primary-color;
   padding-bottom: 80px;
+  padding-top: unset;
+  @include bp.medium {
+    padding-bottom: unset;
+    padding-top: 80px;
+  }
 }
 .center {
   text-align: center;
@@ -227,4 +232,9 @@
 
 .mtop {
   margin-top: 1rem;
+}
+
+.nolinkstyle {
+  color: #000;
+  text-decoration: none;
 }
