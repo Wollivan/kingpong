@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react/cjs/react.development";
+import React, { useState, useEffect } from "react";
 import { passcode } from "../../utils/passcode";
 import "./LockScreen.scss";
 
