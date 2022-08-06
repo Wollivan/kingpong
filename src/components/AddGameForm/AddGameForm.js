@@ -3,7 +3,12 @@ import "./AddGameForm.scss";
 import axios from "axios";
 import { GAMES_API, PLAYERS_API } from "../../utils/api";
 
-export default function AddGameForm({ players, getPlayersList, getGamesList }) {
+export default function AddGameForm({
+  players,
+  getPlayersList,
+  getGamesList,
+  getChallengesList,
+}) {
   const [formValid, setFormValid] = useState(true);
   const [form, setForm] = useState({
     playerOneName: "",
@@ -74,6 +79,7 @@ export default function AddGameForm({ players, getPlayersList, getGamesList }) {
           });
           getPlayersList();
           getGamesList();
+          getChallengesList();
         })
         .catch((err) => {
           console.log(err);
@@ -502,7 +508,7 @@ export default function AddGameForm({ players, getPlayersList, getGamesList }) {
   return (
     <form className="add-game-form" onSubmit={handleSubmit}>
       {/* <button onClick={tempAddGames}>temp add games</button> */}
-      <h3>New Game</h3>
+      <h2>New Game</h2>
       <div className="add-game-form__name-wrap">
         <div className="add-game-form__name-wrap-items">
           <select

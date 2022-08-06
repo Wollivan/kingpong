@@ -82,7 +82,7 @@ export default function AddPlayerForm({
 
   return (
     <form className="add-player-form" onSubmit={handleSubmit}>
-      <h3>Add a new Player</h3>
+      <h2>Add a new Player</h2>
       <input
         name="playerName"
         className="add-player-form__input--half"

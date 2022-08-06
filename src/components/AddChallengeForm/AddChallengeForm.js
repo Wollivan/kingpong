@@ -73,7 +73,7 @@ export default function AddChallengeForm({
   return (
     <form className="add-challenge-form" onSubmit={handleSubmit}>
       {/* <button onClick={tempAddGames}>temp add games</button> */}
-      <h3>Challenge another player</h3>
+      <h2>Challenge another player</h2>
 
       <div className="add-challenge-form__name-wrap">
         <div className="add-challenge-form__name-wrap-items">
@@ -125,7 +125,11 @@ export default function AddChallengeForm({
         id="input-submit"
       />
       <p className="center">
-        player stats are recalculated after each new game is submmited
+        challenges are removed when a game between the players is logged
+      </p>
+      <p className="center">
+        in a future update challenges will show a predicted score using Elo
+        rating system
       </p>
     </form>
   );

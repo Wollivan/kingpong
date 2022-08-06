@@ -10,7 +10,7 @@
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
-  margin: 3rem 0;
+  margin-top: 3rem;
   &__name-wrap {
     display: flex;
     justify-content: space-between;
@@ -29,7 +29,10 @@
 
     &--half {
       @extend .add-player-form__input;
-      width: 48%;
+      width: 100%;
+      @include bp.medium {
+        width: 48%;
+      }
     }
   }
 

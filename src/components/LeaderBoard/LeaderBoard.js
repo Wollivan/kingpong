@@ -140,8 +140,9 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
   if (players) {
     return (
       <>
+        <h2 className="center">Leaderboard</h2>
         <button onClick={toggleDetails} className="toggle-details button">
-          {details ? "Show" : "Hide"} Details
+          {details ? "Show" : "Hide"} Stats
         </button>
         <div className={`leaderboard ${details ? "hide-details" : ""}`}>
           <div className="leaderboard__item--header">

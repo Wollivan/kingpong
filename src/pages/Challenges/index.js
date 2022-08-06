@@ -1,29 +1,27 @@
 import React from "react";
-import GameList from "../../components/GameList/GameList";
+// import GameList from "../../components/GameList/GameList";
 // import LeaderBoard from "../../components/LeaderBoard/LeaderBoard";
 // import axios from "axios";
 // import { PLAYERS_API, GAMES_API, CHALLENGES_API } from "../../utils/api";
-import AddGameForm from "../../components/AddGameForm/AddGameForm";
+// import AddGameForm from "../../components/AddGameForm/AddGameForm";
 // import AddPlayerForm from "../../components/AddPlayerForm/AddPlayerForm";
-// import AddChallengeForm from "../../components/AddChallengeForm/AddChallengeForm";
-// import ChallengesList from "../../components/ChallengesList/ChallengesList";
+import AddChallengeForm from "../../components/AddChallengeForm/AddChallengeForm";
+import ChallengesList from "../../components/ChallengesList/ChallengesList";
 
-export default function Games({
+export default function Challenges({
   players,
   getPlayersList,
-  getGamesList,
-  games,
   getChallengesList,
+  challenges,
 }) {
   return (
     <div>
-      <AddGameForm
+      <AddChallengeForm
         players={players}
         getPlayersList={getPlayersList}
-        getGamesList={getGamesList}
         getChallengesList={getChallengesList}
       />
-      <GameList games={games} />
+      <ChallengesList challenges={challenges} />
     </div>
   );
 }

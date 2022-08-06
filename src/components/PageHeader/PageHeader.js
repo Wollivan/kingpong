@@ -13,14 +13,6 @@ export default function PageHeader() {
         <span className="blink">_</span> <span className="version">beta</span>
       </h1>
       <h3>worlds most competetive table tennis environment</h3>
-      <br />
-      <p>rank is determined by win rate then average point difference</p>{" "}
-      <p>win rate = W / (W+L)</p>
-      {/* <p>
-        elo = point increase/decrease on win/loss based on relative skill to
-        opponent
-      </p> */}
-      <p>point difference = difference in points</p>
     </header>
   );
 }
