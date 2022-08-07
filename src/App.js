@@ -10,6 +10,8 @@ import { PLAYERS_API, GAMES_API, CHALLENGES_API } from "./utils/api";
 import Games from "./pages/Games";
 import Challenges from "./pages/Challenges";
 import Nav from "./components/Nav/Nav";
+import LearderboardPage from "./pages/LearderboardPage";
+import Chat from "./pages/Chat";
 
 // import firebase from "firebase/compat/app";
 
@@ -83,13 +85,13 @@ function App() {
           <LockScreen />
           <PageHeader />
           <Switch>
-            {/* <Route path="/" exact component={Home} /> */}
+            <Route path="/" exact component={Home} />
             <Route
-              path="/"
+              path="/leaderboard"
               exact
               render={(routerProps) => {
                 return (
-                  <Home
+                  <LearderboardPage
                     players={players}
                     details={details}
                     toggleDetails={toggleDetails}
@@ -129,7 +131,7 @@ function App() {
                 );
               }}
             />
-            {/* <Route path="/method" exact component={Method} /> */}
+            <Route path="/chat" exact component={Chat} />
           </Switch>
           <PageFooter />
         </div>
