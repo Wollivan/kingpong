@@ -24,8 +24,12 @@ export default function ChallengesList({ challenges }) {
 
   if (challenges) {
     return (
-      <div className="games">
-        <h2 className="center">Outgoing Challenges</h2>
+      <div className="games center">
+        <h2>Outgoing Challenges</h2>
+        <p>
+          when you add the results of a challenge it will be removed from the
+          list
+        </p>
         <div className="games__game-list">{getOutput()}</div>
       </div>
     );

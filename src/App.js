@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles/App.scss";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import PageHeader from "./components/PageHeader/PageHeader";
 import PageFooter from "./components/PageFooter/PageFooter";
 import Home from "./pages/Home/index";
@@ -20,18 +20,22 @@ function App() {
   const [games, setGames] = useState([]);
   const [challenges, setChallenges] = useState([]);
   const [details, setDetails] = useState(true);
+  const [tournamentCode, setTournamentCode] = useState(true);
 
   useEffect(() => {
     console.log("test");
-    getPlayersList();
-    getGamesList();
-    getChallengesList();
-  }, []);
+    getPlayersList(tournamentCode);
+    getGamesList(tournamentCode);
+    getChallengesList(tournamentCode);
+    if (localStorage.getItem("tournamentCode")) {
+      setTournamentCode(localStorage.getItem("tournamentCode"));
+    }
+  }, [tournamentCode]);
 
-  const getPlayersList = () => {
+  const getPlayersList = (tournamentCode) => {
     console.log("This is even running");
     axios
-      .get(PLAYERS_API)
+      .get(PLAYERS_API, { params: { tournamentCode: tournamentCode } })
       .then((response) => {
         console.log("tryig to get plyaers");
         setPlayers(response.data);
@@ -44,9 +48,9 @@ function App() {
       );
   };
 
-  const getGamesList = () => {
+  const getGamesList = (tournamentCode) => {
     axios
-      .get(GAMES_API)
+      .get(GAMES_API, { params: { tournamentCode: tournamentCode } })
       .then((response) => {
         setGames(response.data.reverse());
       })
@@ -58,9 +62,9 @@ function App() {
       );
   };
 
-  const getChallengesList = () => {
+  const getChallengesList = (tournamentCode) => {
     axios
-      .get(CHALLENGES_API)
+      .get(CHALLENGES_API, { params: { tournamentCode: tournamentCode } })
       .then((response) => {
         // console.log("get ");
         setChallenges(response.data.reverse());
@@ -82,7 +86,7 @@ function App() {
       <>
         <Nav />
         <div className="App">
-          <LockScreen />
+          {/* <LockScreen /> */}
           <PageHeader />
           <Switch>
             <Route path="/" exact component={Home} />
@@ -97,6 +101,7 @@ function App() {
                     toggleDetails={toggleDetails}
                     getPlayersList={getPlayersList}
                     getGamesList={getGamesList}
+                    tournamentCode={tournamentCode}
                   />
                 );
               }}
@@ -112,6 +117,7 @@ function App() {
                     getGamesList={getGamesList}
                     games={games}
                     getChallengesList={getChallengesList}
+                    tournamentCode={tournamentCode}
                   />
                 );
               }}
@@ -127,11 +133,17 @@ function App() {
                     getPlayersList={getPlayersList}
                     getChallengesList={getChallengesList}
                     challenges={challenges}
+                    tournamentCode={tournamentCode}
                   />
                 );
               }}
             />
-            <Route path="/chat" exact component={Chat} />
+            <Route
+              path="/chat"
+              exact
+              component={Chat}
+              tournamentCode={tournamentCode}
+            />
           </Switch>
           <PageFooter />
         </div>

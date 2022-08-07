@@ -3,7 +3,7 @@
 @use "../../styles/partials/breakpoints" as bp;
 
 .games {
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
 
   @include bp.large {
@@ -42,6 +42,7 @@
       &-details {
         display: flex;
         justify-content: center;
+        align-items: center;
         &-v {
           width: 10%;
           text-align: center;
