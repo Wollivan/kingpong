@@ -1,14 +1,9 @@
-import React from "react";
-import LeaderBoard from "../../components/LeaderBoard/LeaderBoard";
-import AddPlayerForm from "../../components/AddPlayerForm/AddPlayerForm";
+import React, { useEffect } from "react";
 
-export default function Home({
-  players,
-  getPlayersList,
-  getGamesList,
-  details,
-  toggleDetails,
-}) {
+export default function Home() {
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
   return (
     <div className="center">
       <p>welcome to kingpong</p>

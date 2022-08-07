@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import GameList from "../../components/GameList/GameList";
 // import LeaderBoard from "../../components/LeaderBoard/LeaderBoard";
 // import axios from "axios";
@@ -14,6 +14,9 @@ export default function Challenges({
   getChallengesList,
   challenges,
 }) {
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
   return (
     <div>
       <AddChallengeForm
