@@ -21,9 +21,9 @@ export default function GameList({ games }) {
               {game.playerTwoName}
             </div>
           </div>
-          <div className="games__game-list-item-date">
+          {/* <div className="games__game-list-item-date">
             {game.gameDate.substr(0, game.gameDate.indexOf("T"))}
-          </div>
+          </div> */}
         </div>
       );
     });
