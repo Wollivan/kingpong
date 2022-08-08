@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { passcode } from "../../utils/passcode";
+import React, { useState } from "react";
 import "./TournamentSelect.scss";
 
-export default function TournamentSelect({ tournamentID, setTournamentID }) {
+export default function TournamentSelect({ setTournamentCode }) {
   const [newPasscode, setNewPasscode] = useState("");
 
   const handleChange = (e) => {
@@ -12,7 +11,8 @@ export default function TournamentSelect({ tournamentID, setTournamentID }) {
   const handlePasscode = (e) => {
     e.preventDefault();
     console.log("test");
-    localStorage.setItem("passcode", newPasscode);
+    localStorage.setItem("tournamentCode", newPasscode);
+    setTournamentCode(newPasscode);
   };
   return (
     <div className="tournament-select">

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./styles/App.scss";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import PageHeader from "./components/PageHeader/PageHeader";
 import PageFooter from "./components/PageFooter/PageFooter";
 import Home from "./pages/Home/index";
-import LockScreen from "./components/LockScreen/LockScreen";
 import axios from "axios";
 import { PLAYERS_API, GAMES_API, CHALLENGES_API } from "./utils/api";
 import Games from "./pages/Games";
@@ -20,10 +19,9 @@ function App() {
   const [games, setGames] = useState([]);
   const [challenges, setChallenges] = useState([]);
   const [details, setDetails] = useState(true);
-  const [tournamentCode, setTournamentCode] = useState(true);
+  const [tournamentCode, setTournamentCode] = useState("");
 
   useEffect(() => {
-    console.log("test");
     getPlayersList(tournamentCode);
     getGamesList(tournamentCode);
     getChallengesList(tournamentCode);
@@ -33,11 +31,9 @@ function App() {
   }, [tournamentCode]);
 
   const getPlayersList = (tournamentCode) => {
-    console.log("This is even running");
     axios
       .get(PLAYERS_API, { params: { tournamentCode: tournamentCode } })
       .then((response) => {
-        console.log("tryig to get plyaers");
         setPlayers(response.data);
       })
       .catch((err) =>
@@ -66,7 +62,6 @@ function App() {
     axios
       .get(CHALLENGES_API, { params: { tournamentCode: tournamentCode } })
       .then((response) => {
-        // console.log("get ");
         setChallenges(response.data.reverse());
       })
       .catch((err) =>
@@ -84,12 +79,23 @@ function App() {
   return (
     <BrowserRouter>
       <>
-        <Nav />
+        {tournamentCode && <Nav />}
         <div className="App">
           {/* <LockScreen /> */}
           <PageHeader />
           <Switch>
-            <Route path="/" exact component={Home} />
+            <Route
+              path="/"
+              exact
+              render={(routerProps) => {
+                return (
+                  <Home
+                    setTournamentCode={setTournamentCode}
+                    tournamentCode={tournamentCode}
+                  />
+                );
+              }}
+            />
             <Route
               path="/leaderboard"
               exact
