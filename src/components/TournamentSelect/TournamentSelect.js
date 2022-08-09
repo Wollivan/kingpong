@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./TournamentSelect.scss";
 
-export default function TournamentSelect({ setTournamentCode }) {
+export default function TournamentSelect({
+  tournamentCode,
+  setTournamentCode,
+}) {
   const [newPasscode, setNewPasscode] = useState("");
 
   const handleChange = (e) => {
@@ -10,18 +13,31 @@ export default function TournamentSelect({ setTournamentCode }) {
 
   const handlePasscode = (e) => {
     e.preventDefault();
-    console.log("test");
+    setNewPasscode("");
     localStorage.setItem("tournamentCode", newPasscode);
     setTournamentCode(newPasscode);
+    window.scrollTo({ top: 0 });
   };
   return (
     <div className="tournament-select">
       <div className="tournament-select__form">
         <h3>Enter tournament code</h3>
-        <p>
-          Once you have added a code you will have access to the leaderboard and
-          all the goodness that goes with it
-        </p>
+        {tournamentCode ? (
+          <>
+            <p>
+              if you are part of multiple tournaments use this to change which
+              one you are interacting with
+            </p>
+            <p>
+              current tournament: <strong>{tournamentCode}</strong>
+            </p>
+          </>
+        ) : (
+          <p>
+            enter a tournament code to gain access to the leaderboard and add
+            games
+          </p>
+        )}
         <input
           name="passcode"
           onChange={handleChange}
@@ -33,7 +49,7 @@ export default function TournamentSelect({ setTournamentCode }) {
           That isn't the password. if you're stuck, ask Tim.
         </p>
         <button className="button mtop" onClick={handlePasscode}>
-          Unlock Tournament
+          {tournamentCode ? "Change Tournament" : "Unlock Tournament"}
         </button>
       </div>
     </div>

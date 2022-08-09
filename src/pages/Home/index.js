@@ -14,8 +14,6 @@ export default function Home({ tournamentCode, setTournamentCode }) {
     <div className="center">
       <h3>welcome to kingpong</h3>
 
-      <TournamentSelect setTournamentCode={setTournamentCode} />
-
       {tournamentCode && (
         <>
           <h3>How to use kingpong</h3>
@@ -45,6 +43,11 @@ export default function Home({ tournamentCode, setTournamentCode }) {
           <p>talk to your fellow competitors</p>
         </>
       )}
+
+      <TournamentSelect
+        tournamentCode={tournamentCode}
+        setTournamentCode={setTournamentCode}
+      />
 
       {/* <p>
         each month the table will reset and we will have a new kingpong in the
