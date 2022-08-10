@@ -9,6 +9,7 @@ export default function LearderboardPage({
   details,
   toggleDetails,
   tournamentCode,
+  setPlayers,
 }) {
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -29,6 +30,7 @@ export default function LearderboardPage({
         players={players}
         details={details}
         toggleDetails={toggleDetails}
+        setPlayers={setPlayers}
       />
       <AddPlayerForm
         players={players}

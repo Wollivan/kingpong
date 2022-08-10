@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./LeaderBoard.scss";
 
-export default function LeaderBoard({ players, details, toggleDetails }) {
+export default function LeaderBoard({
+  players,
+  details,
+  toggleDetails,
+  setPlayers,
+}) {
   const getLeaderBoard = () => {
     // get the players points
     players.forEach((player) => {
@@ -64,7 +69,10 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
     }
     let output = sortedPlayers.map((player, index) => {
       return (
-        <div className="leaderboard__item" key={ordinal_suffix_of(index + 1)}>
+        <div
+          className={`leaderboard__item ${player.show ? "hide-details" : ""}`}
+          key={ordinal_suffix_of(index + 1)}
+        >
           <div className="leaderboard__item-value--pos bold">
             <span className="leaderboard__item-value-mobile-label">
               Position{" "}
@@ -87,7 +95,9 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
             <span className="leaderboard__item-value-mobile-label">
               Avg Point Diff{" "}
             </span>
-            {player.pointDiff ? parseFloat(player.pointDiff).toFixed(2) : "-"}
+            {!isNaN(player.pointDiff)
+              ? parseFloat(player.pointDiff).toFixed(2)
+              : "-"}
           </div>
           <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">Wins </span>

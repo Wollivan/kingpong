@@ -51,6 +51,13 @@ export default function TournamentSelect({
         <button className="button mtop" onClick={handlePasscode}>
           {tournamentCode ? "Change Tournament" : "Unlock Tournament"}
         </button>
+        <p>
+          to create a new tournament and get a code to give to your players send
+          an email to{" "}
+          <a href="kingpongapp@gmail.com" className="tournament-select__link">
+            kingpongapp@gmail.com
+          </a>
+        </p>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ export default function AddChallengeForm({
   players,
   getPlayersList,
   getChallengesList,
+  tournamentCode,
 }) {
   const [formValid, setFormValid] = useState(true);
   const [form, setForm] = useState({
@@ -16,6 +17,7 @@ export default function AddChallengeForm({
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    console.log({ ...form, tournamentCode });
   };
 
   const isFormValid = () => {
@@ -53,7 +55,7 @@ export default function AddChallengeForm({
     if (isFormValid()) {
       setFormValid(true);
       axios
-        .post(CHALLENGES_API, form)
+        .post(CHALLENGES_API, { ...form, tournamentCode })
         .then(() => {
           setForm({
             playerOneName: "",

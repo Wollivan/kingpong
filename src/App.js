@@ -114,6 +114,7 @@ function App() {
                     getPlayersList={getPlayersList}
                     getGamesList={getGamesList}
                     tournamentCode={tournamentCode}
+                    setPlayers={setPlayers}
                   />
                 );
               }}

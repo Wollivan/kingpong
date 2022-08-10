@@ -13,6 +13,7 @@ export default function Challenges({
   getPlayersList,
   getChallengesList,
   challenges,
+  tournamentCode,
 }) {
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -23,6 +24,7 @@ export default function Challenges({
         players={players}
         getPlayersList={getPlayersList}
         getChallengesList={getChallengesList}
+        tournamentCode={tournamentCode}
       />
       <ChallengesList challenges={challenges} />
     </div>
