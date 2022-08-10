@@ -46,7 +46,7 @@
       &--pos {
         @extend .leaderboard__item-value;
         text-align: center;
-        @include bp.medium {
+        @include bp.large {
           width: 6%;
         }
       }

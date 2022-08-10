@@ -82,6 +82,12 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
             {player.winRate ? parseFloat(player.winRate).toFixed(2) : "-"}
           </div>
           <div className="leaderboard__item-value canhide">
+            <span className="leaderboard__item-value-mobile-label">
+              Avg Point Diff{" "}
+            </span>
+            {player.pointDiff ? parseFloat(player.pointDiff).toFixed(2) : "-"}
+          </div>
+          <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">Wins </span>
             {player.wins}
           </div>
@@ -109,12 +115,7 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
             </span>
             {player.avgOpScore ? parseFloat(player.avgOpScore).toFixed(2) : "-"}
           </div>
-          <div className="leaderboard__item-value canhide">
-            <span className="leaderboard__item-value-mobile-label">
-              Avg Point Diff{" "}
-            </span>
-            {player.pointDiff ? parseFloat(player.pointDiff).toFixed(2) : "-"}
-          </div>
+
           {/* <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">Elo</span>
             {player.elo}
@@ -148,15 +149,16 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
           <div className="leaderboard__item--header">
             <div className="leaderboard__item-value--pos">Pos</div>
             <div className="leaderboard__item-value">Name</div>
-            <div className="leaderboard__item-value">winRate</div>
+            <div className="leaderboard__item-value">Win Rate</div>
+            <div className="leaderboard__item-value canhide">
+              Avg Point Diff
+            </div>
             <div className="leaderboard__item-value canhide">Wins</div>
             <div className="leaderboard__item-value canhide">Losses</div>
             <div className="leaderboard__item-value canhide">Perfect Games</div>
             <div className="leaderboard__item-value canhide">Avg Score</div>
             <div className="leaderboard__item-value canhide">Avg Op. Score</div>
-            <div className="leaderboard__item-value canhide">
-              Avg Point Diff
-            </div>
+
             {/* <div className="leaderboard__item-value canhide">Elo</div> */}
             {/* <div className="leaderboard__item-value">Most Wins Against</div>
             <div className="leaderboard__item-value">Most Losses Against</div> */}

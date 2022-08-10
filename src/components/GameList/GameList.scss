@@ -9,6 +9,12 @@
   @include bp.large {
     width: 50%;
   }
+  &__wrap {
+    width: 100%;
+    &-title {
+      text-align: center;
+    }
+  }
   &__game-list {
     display: flex;
     flex-direction: column;
@@ -19,7 +25,7 @@
     overflow-x: hidden;
     overflow-y: scroll;
     border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border: 3px solid #000;
 
     &-item {
       display: flex;
