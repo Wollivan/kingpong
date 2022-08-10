@@ -1,4 +1,4 @@
-# KINGPONG_
+# kingpong_
 
 ![Hero Image](https://github.com/PriyathamVarma/kingpong/blob/main/kingpong.png)
 
