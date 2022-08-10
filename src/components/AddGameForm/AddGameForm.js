@@ -8,6 +8,7 @@ export default function AddGameForm({
   getPlayersList,
   getGamesList,
   getChallengesList,
+  tournamentCode,
 }) {
   const [formValid, setFormValid] = useState(true);
   const [form, setForm] = useState({
@@ -69,7 +70,7 @@ export default function AddGameForm({
     if (isFormValid()) {
       setFormValid(true);
       axios
-        .post(GAMES_API, form)
+        .post(GAMES_API, { ...form, tournamentCode })
         .then(() => {
           setForm({
             playerOneName: "",

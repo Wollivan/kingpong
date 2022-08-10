@@ -8,6 +8,7 @@ export default function LearderboardPage({
   getGamesList,
   details,
   toggleDetails,
+  tournamentCode,
 }) {
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -33,6 +34,7 @@ export default function LearderboardPage({
         players={players}
         getPlayersList={getPlayersList}
         getGamesList={getGamesList}
+        tournamentCode={tournamentCode}
       />
     </div>
   );

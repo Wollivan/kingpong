@@ -12,8 +12,6 @@ export default function Home({ tournamentCode, setTournamentCode }) {
   }, []);
   return (
     <div className="center">
-      <h3>welcome to kingpong</h3>
-
       {tournamentCode && (
         <>
           <h3>How to use kingpong</h3>

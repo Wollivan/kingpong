@@ -79,7 +79,9 @@ export default function LeaderBoard({ players, details, toggleDetails }) {
             <span className="leaderboard__item-value-mobile-label">
               Win Rate
             </span>
-            {player.winRate ? parseFloat(player.winRate).toFixed(2) : "-"}
+            {!isNaN(player.winRate)
+              ? parseFloat(player.winRate).toFixed(2)
+              : "-"}
           </div>
           <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">

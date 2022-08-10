@@ -22,17 +22,19 @@ function App() {
   const [tournamentCode, setTournamentCode] = useState("");
 
   useEffect(() => {
-    getPlayersList(tournamentCode);
-    getGamesList(tournamentCode);
-    getChallengesList(tournamentCode);
     if (localStorage.getItem("tournamentCode")) {
+      getPlayersList(tournamentCode);
+      getGamesList(tournamentCode);
+      getChallengesList(tournamentCode);
       setTournamentCode(localStorage.getItem("tournamentCode"));
     }
   }, [tournamentCode]);
 
   const getPlayersList = (tournamentCode) => {
     axios
-      .get(PLAYERS_API, { params: { tournamentCode: tournamentCode } })
+      .get(PLAYERS_API, {
+        params: { tournamentCode: localStorage.getItem("tournamentCode") },
+      })
       .then((response) => {
         setPlayers(response.data);
       })
@@ -46,7 +48,9 @@ function App() {
 
   const getGamesList = (tournamentCode) => {
     axios
-      .get(GAMES_API, { params: { tournamentCode: tournamentCode } })
+      .get(GAMES_API, {
+        params: { tournamentCode: localStorage.getItem("tournamentCode") },
+      })
       .then((response) => {
         setGames(response.data.reverse());
       })
@@ -60,7 +64,9 @@ function App() {
 
   const getChallengesList = (tournamentCode) => {
     axios
-      .get(CHALLENGES_API, { params: { tournamentCode: tournamentCode } })
+      .get(CHALLENGES_API, {
+        params: { tournamentCode: localStorage.getItem("tournamentCode") },
+      })
       .then((response) => {
         setChallenges(response.data.reverse());
       })
