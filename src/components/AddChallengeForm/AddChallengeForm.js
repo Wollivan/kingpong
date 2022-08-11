@@ -75,7 +75,7 @@ export default function AddChallengeForm({
   return (
     <form className="add-challenge-form" onSubmit={handleSubmit}>
       {/* <button onClick={tempAddGames}>temp add games</button> */}
-      <h2>Challenge another player</h2>
+      <h2 className="page-title">Challenge another player</h2>
 
       <div className="add-challenge-form__name-wrap">
         <div className="add-challenge-form__name-wrap-items">

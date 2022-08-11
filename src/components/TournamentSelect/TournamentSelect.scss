@@ -1,3 +1,7 @@
+@use "../../styles/partials/variables" as v;
+@use "../../styles/partials/mixins" as m;
+@use "../../styles/partials/breakpoints" as bp;
+
 .tournament-select {
   text-align: center;
   &__form {
@@ -8,7 +12,7 @@
     height: 100%;
     padding: 2rem;
     &-input {
-      width: 50%;
+      width: 90%;
       margin-bottom: 1rem;
       font-family: Arial, Helvetica, sans-serif;
       margin-bottom: 0;
@@ -16,6 +20,9 @@
       border-radius: 0.5rem;
       border: none;
       padding: 1rem;
+      @include bp.medium {
+        width: 50%;
+      }
     }
     &-error-text {
       display: none;

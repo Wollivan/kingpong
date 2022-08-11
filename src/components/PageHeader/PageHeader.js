@@ -10,7 +10,7 @@ export default function PageHeader() {
       {/* <span className="version">v0.1</span> */}
       <Link to="/" className="nolinkstyle">
         <img src={kingpong} alt="kingpong logo" className="header__logo" />
-        <h1>
+        <h1 className="header__text-logo">
           kingpong
           <span className="blink">_</span> <span className="version">beta</span>
         </h1>

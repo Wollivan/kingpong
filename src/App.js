@@ -93,7 +93,7 @@ function App() {
         {tournamentCode && <Nav />}
         <div className="App">
           {/* <LockScreen /> */}
-          <PageHeader />
+          {/* <PageHeader /> */}
           <Switch>
             <Route
               path="/"
@@ -167,7 +167,6 @@ function App() {
               tournamentCode={tournamentCode}
             />
           </Switch>
-        
         </div>
       </>
     </BrowserRouter>

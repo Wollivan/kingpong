@@ -510,7 +510,7 @@ export default function AddGameForm({
   return (
     <form className="add-game-form" onSubmit={handleSubmit}>
       {/* <button onClick={tempAddGames}>temp add games</button> */}
-      <h2>New Game</h2>
+      <h2 className="page-title">New Game</h2>
       <div className="add-game-form__name-wrap">
         <div className="add-game-form__name-wrap-items">
           <select

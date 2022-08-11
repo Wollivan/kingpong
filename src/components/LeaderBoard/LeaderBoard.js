@@ -170,7 +170,6 @@ export default function LeaderBoard({
   if (players) {
     return (
       <>
-        <h2 className="center">Leaderboard</h2>
         <button onClick={toggleDetails} className="toggle-details button">
           {details ? "Show" : "Hide"} Stats
         </button>

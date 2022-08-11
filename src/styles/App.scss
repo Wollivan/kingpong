@@ -13,11 +13,12 @@
   font-family: "Roboto Mono", monospace;
   padding: 0 5%;
   background-color: v.$primary-color;
-  padding-bottom: 80px;
+  padding-bottom: 120px;
   padding-top: unset;
   @include bp.medium {
-    padding-bottom: unset;
-    padding-top: 80px;
+    padding-bottom: 40px;
+    padding-top: 140px;
+    min-height: 100vh;
   }
 }
 .center {
@@ -234,6 +235,9 @@
 .mtop {
   margin-top: 1rem;
 }
+.mtopmd {
+  margin-top: 1.5rem;
+}
 .mtoplg {
   margin-top: 3rem;
 }
@@ -250,4 +254,8 @@
 }
 .show {
   display: block;
+}
+
+.page-title {
+  margin-top: 3rem;
 }

@@ -24,7 +24,8 @@ export default function LearderboardPage({
   return (
     <div>
       <div className="center">
-        <button class="button" onClick={showModal}>
+        <h2 className="page-title">Leaderboard</h2>
+        <button class="button mtopmd" onClick={showModal}>
           {rankModal ? "hide rank details" : "how is rank decided"}
         </button>
         <div className={`rank-modal ${rankModal ? "show" : ""}`}>
