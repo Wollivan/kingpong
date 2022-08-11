@@ -51,6 +51,14 @@ export default function Home({ tournamentCode, setTournamentCode }) {
         each month the table will reset and we will have a new kingpong in the
         hall of fame
       </p> */}
+<a
+          href="https://timjs.netlify.app/"
+          target="_blank"
+          rel="noreferrer"
+          className="nolinkstyle"
+        >
+          built by a kingpong with a typewriter and an infinite amount of time
+        </a>
     </div>
   );
 }
