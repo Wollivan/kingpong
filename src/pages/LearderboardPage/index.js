@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LeaderBoard from "../../components/LeaderBoard/LeaderBoard";
 import AddPlayerForm from "../../components/AddPlayerForm/AddPlayerForm";
 
@@ -11,22 +11,40 @@ export default function LearderboardPage({
   tournamentCode,
   setPlayers,
 }) {
+  const [rankModal, setRankModal] = useState(false);
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
+
+  const showModal = () => {
+    setRankModal(!rankModal);
+    console.log(rankModal);
+  };
+
   return (
     <div>
       <div className="center">
-        <p>rank is determined by win rate then average point difference</p>{" "}
-        <p>win rate = W / (W+L)</p>
-        {/* <p>
+        <button class="button" onClick={showModal}>
+          {rankModal ? "hide rank details" : "how is rank decided"}
+        </button>
+        <div className={`rank-modal ${rankModal ? "show" : ""}`}>
+          <h3>rank</h3>
+          <p>
+            rank is determined by win rate then average point difference then
+            crown wins
+          </p>{" "}
+          <p>win rate = W / (W+L)</p>
+          <p>point difference = difference in points</p>
+          <p>crown wins = wins while you're the kingpong</p>
+          <br />
+          {/* <p>
         elo = point increase/decrease on win/loss based on relative skill to
         opponent
       </p> */}
-        <p>point difference = difference in points</p>
-        <br />
+        </div>
+        <h3>who is the kingpong</h3>
         <p>👑 = current kingpong</p>
-        <p>to take the crown, defeat the current king</p>
+        <p>to take the crown defeat the current king</p>
         <br />
       </div>
       <LeaderBoard

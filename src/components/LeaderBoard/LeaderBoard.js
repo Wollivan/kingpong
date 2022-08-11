@@ -140,7 +140,7 @@ export default function LeaderBoard({
           </div>
           <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">
-              Wins /w Crown{" "}
+              Crown Wins{" "}
             </span>
             {player.kingpongCount}
           </div>
@@ -187,7 +187,7 @@ export default function LeaderBoard({
             <div className="leaderboard__item-value canhide">Perfect Games</div>
             <div className="leaderboard__item-value canhide">Avg Score</div>
             <div className="leaderboard__item-value canhide">Avg Op. Score</div>
-            <div className="leaderboard__item-value canhide">Wins /w Crown</div>
+            <div className="leaderboard__item-value canhide">Crown Wins</div>
 
             {/* <div className="leaderboard__item-value canhide">Elo</div> */}
             {/* <div className="leaderboard__item-value">Most Wins Against</div>

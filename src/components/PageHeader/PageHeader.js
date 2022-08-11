@@ -15,7 +15,7 @@ export default function PageHeader() {
           <span className="blink">_</span> <span className="version">beta</span>
         </h1>
       </Link>
-      <h3>worlds most competetive table tennis environment</h3>
+      <h2>the worlds most competetive table tennis environment</h2>
     </header>
   );
 }

@@ -241,3 +241,13 @@
   color: #000;
   text-decoration: none;
 }
+
+.rank-modal {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+.show {
+  display: block;
+}
