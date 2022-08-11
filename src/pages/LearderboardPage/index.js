@@ -25,6 +25,9 @@ export default function LearderboardPage({
       </p> */}
         <p>point difference = difference in points</p>
         <br />
+        <p>👑 = current kingpong</p>
+        <p>to take the crown, defeat the current king</p>
+        <br />
       </div>
       <LeaderBoard
         players={players}

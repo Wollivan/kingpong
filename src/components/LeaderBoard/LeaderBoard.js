@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./LeaderBoard.scss";
+import GoldenPaddle from "../../assets/images/golden-paddle.png";
 
 export default function LeaderBoard({
   players,
@@ -68,6 +69,7 @@ export default function LeaderBoard({
       return i + "th";
     }
     let output = sortedPlayers.map((player, index) => {
+      console.log(player);
       return (
         <div
           className={`leaderboard__item ${player.show ? "hide-details" : ""}`}
@@ -81,7 +83,16 @@ export default function LeaderBoard({
           </div>
           <div className="leaderboard__item-value">
             <span className="leaderboard__item-value-mobile-label">Name </span>
-            {player.name} {index === 0 ? " 👑" : ""}
+            {player.name} {player.hasGoldenMonkey ? " 👑" : ""}{" "}
+            {/* {player.hasGoldenMonkey ? (
+              <img
+                src={GoldenPaddle}
+                alt="golden paddle"
+                className="golden-paddle"
+              />
+            ) : (
+              ""
+            )} */}
           </div>
           <div className="leaderboard__item-value">
             <span className="leaderboard__item-value-mobile-label">
@@ -127,6 +138,12 @@ export default function LeaderBoard({
             </span>
             {player.avgOpScore ? parseFloat(player.avgOpScore).toFixed(2) : "-"}
           </div>
+          <div className="leaderboard__item-value canhide">
+            <span className="leaderboard__item-value-mobile-label">
+              Wins /w Crown{" "}
+            </span>
+            {player.kingpongCount}
+          </div>
 
           {/* <div className="leaderboard__item-value canhide">
             <span className="leaderboard__item-value-mobile-label">Elo</span>
@@ -170,6 +187,7 @@ export default function LeaderBoard({
             <div className="leaderboard__item-value canhide">Perfect Games</div>
             <div className="leaderboard__item-value canhide">Avg Score</div>
             <div className="leaderboard__item-value canhide">Avg Op. Score</div>
+            <div className="leaderboard__item-value canhide">Wins /w Crown</div>
 
             {/* <div className="leaderboard__item-value canhide">Elo</div> */}
             {/* <div className="leaderboard__item-value">Most Wins Against</div>
