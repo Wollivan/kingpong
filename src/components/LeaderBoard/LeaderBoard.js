@@ -193,7 +193,11 @@ export default function LeaderBoard({
             {/* <div className="leaderboard__item-value">Most Wins Against</div>
             <div className="leaderboard__item-value">Most Losses Against</div> */}
           </div>
-          {getLeaderBoard()}
+          {players == [] ? (
+            getLeaderBoard()
+          ) : (
+            <p className="no-players">no players to display yet</p>
+          )}
         </div>
       </>
     );

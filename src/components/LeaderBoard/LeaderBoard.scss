@@ -104,3 +104,13 @@
 .golden-paddle {
   width: 20px;
 }
+
+.no-players {
+  width: 100%;
+  text-align: center;
+  background: v.$secondary-color;
+  padding: 1rem;
+  margin: 0;
+  border: 3px solid #000;
+  color: #fff;
+}
