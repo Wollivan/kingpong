@@ -167,7 +167,7 @@ function App() {
               tournamentCode={tournamentCode}
             />
           </Switch>
-          <PageFooter />
+        
         </div>
       </>
     </BrowserRouter>
