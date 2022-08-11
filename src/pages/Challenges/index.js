@@ -14,6 +14,8 @@ export default function Challenges({
   getChallengesList,
   challenges,
   tournamentCode,
+  addGameForm,
+  setAddGameForm,
 }) {
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -26,7 +28,11 @@ export default function Challenges({
         getChallengesList={getChallengesList}
         tournamentCode={tournamentCode}
       />
-      <ChallengesList challenges={challenges} />
+      <ChallengesList
+        challenges={challenges}
+        addGameForm={addGameForm}
+        setAddGameForm={setAddGameForm}
+      />
     </div>
   );
 }

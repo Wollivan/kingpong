@@ -33,12 +33,12 @@ export default function Home({ tournamentCode, setTournamentCode }) {
             className="home__icon mtoplg"
           />
           <p>challenge another player or check if you've been challenged</p>
-          <img
+          {/* <img
             src={chatIcon}
             alt="chat menu item"
             className="home__icon mtoplg"
           />
-          <p>talk to your fellow competitors</p>
+          <p>talk to your fellow competitors</p> */}
         </>
       )}
 

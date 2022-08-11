@@ -35,9 +35,9 @@ export default function Nav() {
             className="nav__links-img"
           />
         </Link>
-        <Link to="/chat" className="nav__links-link">
+        {/* <Link to="/chat" className="nav__links-link">
           <img src={chatIcon} alt="chat menu item" className="nav__links-img" />
-        </Link>
+        </Link> */}
       </div>
     </nav>
   );

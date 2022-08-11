@@ -31,7 +31,7 @@ export default function LeaderBoard({
     });
 
     //sort by elo. In case of a draw, point diff is used
-    const sortedPlayers = players.sort((a, b) => {
+    players.sort((a, b) => {
       if (a.winRate === b.winRate) {
         return b.pointDiff - a.pointDiff;
         // if (a.elo === b.elo) {
@@ -49,7 +49,7 @@ export default function LeaderBoard({
       return 1;
     });
 
-    // const sortedPlayers = players.sort((a, b) => {
+    // const players = players.sort((a, b) => {
     //   return b.points - a.points;
     // });
 
@@ -68,7 +68,7 @@ export default function LeaderBoard({
       }
       return i + "th";
     }
-    let output = sortedPlayers.map((player, index) => {
+    let output = players.map((player, index) => {
       console.log(player);
       return (
         <div

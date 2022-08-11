@@ -30,6 +30,10 @@
       padding: 1rem;
       background-color: v.$tertiary-color;
       color: #fff;
+      text-decoration: none;
+      &:hover {
+        background-color: v.$secondary-color;
+      }
       &:first-child {
         border-top: none;
       }
@@ -55,6 +59,10 @@
           //   padding-left: 1rem;
           width: 45%;
           text-align: right;
+        }
+        &-no-challenges {
+          width: 100%;
+          text-align: center;
         }
       }
     }

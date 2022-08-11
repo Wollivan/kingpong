@@ -9,14 +9,11 @@ export default function AddGameForm({
   getGamesList,
   getChallengesList,
   tournamentCode,
+  form,
+  setForm,
 }) {
   const [formValid, setFormValid] = useState(true);
-  const [form, setForm] = useState({
-    playerOneName: "",
-    playerTwoName: "",
-    playerOneScore: "",
-    playerTwoScore: "",
-  });
+  //form state is stored in app so we can use it to click on challenges and populate the form
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -506,6 +503,10 @@ export default function AddGameForm({
       }, i * 1000);
     });
   };
+
+  // sort players by name without changing leaderboard order
+  const playersList = [...players];
+  playersList.sort((a, b) => a.name.localeCompare(b.name));
   return (
     <form className="add-game-form" onSubmit={handleSubmit}>
       {/* <button onClick={tempAddGames}>temp add games</button> */}
@@ -519,7 +520,7 @@ export default function AddGameForm({
             onChange={handleChange}
           >
             <option>- Player One -</option>
-            {players.map((player, i) => {
+            {playersList.map((player, i) => {
               return (
                 <option value={player.name} key={i}>
                   {player.name}
@@ -556,7 +557,7 @@ export default function AddGameForm({
             onChange={handleChange}
           >
             <option>- Player Two -</option>
-            {players.map((player, i) => {
+            {playersList.map((player, i) => {
               return (
                 <option value={player.name} key={i}>
                   {player.name}

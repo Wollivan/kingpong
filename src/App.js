@@ -20,7 +20,12 @@ function App() {
   const [challenges, setChallenges] = useState([]);
   const [details, setDetails] = useState(true);
   const [tournamentCode, setTournamentCode] = useState("");
-
+  const [addGameForm, setAddGameForm] = useState({
+    playerOneName: "",
+    playerTwoName: "",
+    playerOneScore: "",
+    playerTwoScore: "",
+  });
   useEffect(() => {
     if (localStorage.getItem("tournamentCode")) {
       getPlayersList(tournamentCode);
@@ -131,6 +136,8 @@ function App() {
                     games={games}
                     getChallengesList={getChallengesList}
                     tournamentCode={tournamentCode}
+                    addGameForm={addGameForm}
+                    setAddGameForm={setAddGameForm}
                   />
                 );
               }}
@@ -147,6 +154,8 @@ function App() {
                     getChallengesList={getChallengesList}
                     challenges={challenges}
                     tournamentCode={tournamentCode}
+                    addGameForm={addGameForm}
+                    setAddGameForm={setAddGameForm}
                   />
                 );
               }}

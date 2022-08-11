@@ -1,11 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./ChallengesList.scss";
 
-export default function ChallengesList({ challenges }) {
+export default function ChallengesList({ challenges, setAddGameForm }) {
   const getOutput = () => {
     let output = challenges.map((challenge, i) => {
       return (
-        <div className="challenges__challenge-list-item" key={i}>
+        <Link
+          className="challenges__challenge-list-item"
+          key={i}
+          onClick={() =>
+            acceptChallenge(challenge.playerOneName, challenge.playerTwoName)
+          }
+          to="/games"
+        >
           <div className="challenges__challenge-list-item-details">
             <div className="challenges__challenge-list-item-details-player-one">
               {challenge.playerOneName}
@@ -16,12 +24,20 @@ export default function ChallengesList({ challenges }) {
               {challenge.playerTwoName}
             </div>
           </div>
-        </div>
+        </Link>
       );
     });
     return output;
   };
 
+  const acceptChallenge = (playerOneName, playerTwoName) => {
+    setAddGameForm({
+      playerOneName,
+      playerTwoName,
+      playerOneScore: "",
+      playerTwoScore: "",
+    });
+  };
   if (challenges) {
     return (
       <div className="games center">
@@ -30,7 +46,19 @@ export default function ChallengesList({ challenges }) {
           when you add the results of a challenge it will be removed from the
           list
         </p>
-        <div className="games__game-list">{getOutput()}</div>
+        <div className="games__game-list">
+          {challenges == [] ? (
+            getOutput()
+          ) : (
+            <div className="challenges__challenge-list-item">
+              <div className="challenges__challenge-list-item-details">
+                <div className="challenges__challenge-list-item-details-no-challenges">
+                  no challenges
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     );
   } else {
