@@ -50,9 +50,7 @@ export default function GameList({ games }) {
       <div className="games">
         <h2 className="center">Games</h2>
         <div className="games__game-list">
-          {games == [] ? (
-            getOutput()
-          ) : (
+          {games.length === 0 ? (
             <div className="games__game-list-item">
               <div className="games__game-list-item-details">
                 <div className="games__game-list-item-details-no-games">
@@ -63,6 +61,8 @@ export default function GameList({ games }) {
             {game.gameDate.substr(0, game.gameDate.indexOf("T"))}
           </div> */}
             </div>
+          ) : (
+            getOutput()
           )}
         </div>
       </div>

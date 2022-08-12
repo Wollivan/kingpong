@@ -47,9 +47,7 @@ export default function ChallengesList({ challenges, setAddGameForm }) {
           list
         </p>
         <div className="games__game-list">
-          {challenges == [] ? (
-            getOutput()
-          ) : (
+          {challenges.length === 0 ? (
             <div className="challenges__challenge-list-item">
               <div className="challenges__challenge-list-item-details">
                 <div className="challenges__challenge-list-item-details-no-challenges">
@@ -57,6 +55,8 @@ export default function ChallengesList({ challenges, setAddGameForm }) {
                 </div>
               </div>
             </div>
+          ) : (
+            getOutput()
           )}
         </div>
       </div>

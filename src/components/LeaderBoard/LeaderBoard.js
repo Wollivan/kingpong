@@ -8,6 +8,21 @@ export default function LeaderBoard({
   toggleDetails,
   setPlayers,
 }) {
+  // const [showPlayers, setShowPlayers] = useState(players);
+
+  // const handleShow = (playerName) => {
+  //   const newShowPlayers = [...players];
+
+  //   newShowPlayers.forEach((player) => {
+  //     console.log(player);
+  //     if (player.name === playerName) {
+  //       player.show = player.show ? false : true;
+  //     }
+  //   });
+  //   setPlayers(newShowPlayers);
+  //   console.log(newShowPlayers);
+  // };
+
   const getLeaderBoard = () => {
     // get the players points
     players.forEach((player) => {
@@ -28,6 +43,9 @@ export default function LeaderBoard({
       const pointDiff =
         parseFloat(player.avgScore) - parseFloat(player.avgOpScore);
       player.pointDiff = pointDiff;
+
+      // add show property for whether or not to show details
+      player.show = false;
     });
 
     //sort by elo. In case of a draw, point diff is used
@@ -68,8 +86,8 @@ export default function LeaderBoard({
       }
       return i + "th";
     }
+
     let output = players.map((player, index) => {
-      console.log(player);
       return (
         <div
           className={`leaderboard__item ${player.show ? "hide-details" : ""}`}
@@ -161,6 +179,13 @@ export default function LeaderBoard({
             </span>
             {player.mostLossesAgainst}
           </div> */}
+          {/* <button
+            onClick={() => {
+              handleShow(player.name);
+            }}
+          >
+            Show
+          </button> */}
         </div>
       );
     });
@@ -192,10 +217,10 @@ export default function LeaderBoard({
             {/* <div className="leaderboard__item-value">Most Wins Against</div>
             <div className="leaderboard__item-value">Most Losses Against</div> */}
           </div>
-          {players == [] ? (
-            getLeaderBoard()
-          ) : (
+          {players.length === 0 ? (
             <p className="no-players">no players to display yet</p>
+          ) : (
+            getLeaderBoard()
           )}
         </div>
       </>
