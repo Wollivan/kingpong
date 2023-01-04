@@ -1,0 +1,24 @@
+{
+  "name": "instock",
+  "version": "1.0.0",
+  "description": "Server for keeping score of pingpong match scores",
+  "main": "server.js",
+  "scripts": {
+    "start": "./node_modules/.bin/netlify-lambda serve src",
+    "build": "./node_modules/.bin/netlify-lambda build src"
+  },
+  "author": "Felipe and Tim",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "elo-rating": "^1.0.1",
+    "express": "^4.17.1",
+    "mongodb-client-encryption": "^2.1.0",
+    "mongoose": "^6.5.0",
+    "netlify-lambda": "^2.0.15",
+    "nodemon": "^2.0.15",
+    "serverless-http": "^3.0.1",
+    "uniqid": "^5.4.0"
+  }
+}

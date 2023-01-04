@@ -1,0 +1,14 @@
+@use "../../styles/partials/variables" as v;
+@use "../../styles/partials/mixins" as m;
+@use "../../styles/partials/breakpoints" as bp;
+
+.footer {
+  padding: 2rem 3rem 1rem 3rem;
+  text-align: center;
+  a {
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}

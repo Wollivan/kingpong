@@ -1,0 +1,45 @@
+@use "../../styles/partials/variables" as v;
+@use "../../styles/partials/mixins" as m;
+@use "../../styles/partials/breakpoints" as bp;
+
+.tournament-select {
+  text-align: center;
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 2rem;
+    &-input {
+      width: 90%;
+      margin-bottom: 1rem;
+      font-family: Arial, Helvetica, sans-serif;
+      margin-bottom: 0;
+      margin-top: 1.5rem;
+      border-radius: 0.5rem;
+      border: none;
+      padding: 1rem;
+      @include bp.medium {
+        width: 50%;
+      }
+    }
+    .code-error {
+      display: none;
+    }
+    .show {
+      display: block;
+    }
+    &-error-text {
+      display: none;
+      margin: 0;
+      color: #ff0000;
+    }
+  }
+  &__link {
+    color: #000;
+  }
+}
+.show {
+  display: block;
+}

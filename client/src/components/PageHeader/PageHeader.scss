@@ -1,0 +1,39 @@
+@use "../../styles/partials/variables" as v;
+@use "../../styles/partials/mixins" as m;
+@use "../../styles/partials/breakpoints" as bp;
+
+.header {
+  text-align: center;
+  padding-top: 3rem;
+
+  // band aid on the actual problem of height on page
+  margin-top: 0;
+  @include bp.medium {
+    margin-top: -80px;
+  }
+  &__logo {
+    max-width: 60%;
+    @include bp.medium {
+      max-width: 40%;
+    }
+    @include bp.large {
+      max-width: 25%;
+    }
+  }
+  &__text-logo {
+    margin-left: 20px;
+  }
+}
+.version {
+  font-size: 0.8rem;
+}
+
+.blink {
+  animation: blink-animation 1s steps(2, start) infinite;
+  display: inline;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
